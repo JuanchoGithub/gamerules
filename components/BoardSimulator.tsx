@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { GameId } from '../types';
 
@@ -83,7 +82,6 @@ const BoardSimulator: React.FC<BoardSimulatorProps> = ({ gameId, highlightSquare
       if (config === 'chess_round3') {
         const board = { ...initialMap }; delete board[52]; delete board[12]; delete board[62]; delete board[1]; delete board[61]; delete board[6];
         board[36] = renderPiece('pawn', 'W'); board[28] = renderPiece('pawn', 'B');
-        board[45] = renderPiece('knight', 'W'); board[18] = some piece;
         board[45] = renderPiece('knight', 'W'); board[18] = renderPiece('knight', 'B');
         board[34] = renderPiece('bishop', 'W'); board[21] = renderPiece('knight', 'B');
         return board[i];
@@ -326,7 +324,6 @@ const BoardSimulator: React.FC<BoardSimulatorProps> = ({ gameId, highlightSquare
 
     const state = getMancalaState();
 
-    // Fix: Using React.FC to properly type the component so it accepts the 'key' prop in JSX
     const Gem: React.FC<{ index: number }> = ({ index }) => {
       const colors = [
         'bg-rose-400 shadow-rose-600/50',

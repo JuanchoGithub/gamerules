@@ -1,5 +1,5 @@
 {
   "name": "BoardMaster Simulator",
-  "description": "An interactive board game rule simulator and strategy guide for Chess, Checkers, and Backgammon, localized in English and Argentine Spanish. Features AI-powered rule explanations, kid-friendly house rules, and strategic scenario visualizations.",
+  "description": "An interactive board game rule simulator and strategy guide for Chess, Checkers, and Backgammon, localized in English and Argentine Spanish. Features expert-curated rule explanations, kid-friendly house rules, and strategic scenario visualizations.",
   "requestFramePermissions": []
 }

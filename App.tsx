@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { GameId, Language } from './types';
 import { GAMES, UI_TEXT } from './constants';
@@ -68,18 +67,18 @@ const App: React.FC = () => {
                 {lang === 'en' ? 'New to Board Games?' : '¿Sos nuevo en esto?'}
               </span>
               <h3 className="text-3xl font-bold font-serif">
-                {lang === 'en' ? 'Master any game in minutes with our AI teachers.' : 'Dominá cualquier juego en minutos con nuestros profes de IA.'}
+                {lang === 'en' ? 'Master any game in minutes with our expert guides.' : 'Dominá cualquier juego en minutos con nuestras guías expertas.'}
               </h3>
               <p className="text-slate-600 leading-relaxed">
                 {lang === 'en' 
-                  ? 'We use the power of Gemini 3 to explain rules, suggest strategies, and answer your most complex questions. No more thick manuals!' 
-                  : 'Usamos el poder de Gemini 3 para explicarte las reglas, tirarte estrategias y sacarte todas las dudas. ¡Olvidate de los manuales densos!'}
+                  ? 'We provide deep dives into rules, suggest proven strategies, and visualize complex board scenarios. No more thick manuals!' 
+                  : 'Te explicamos las reglas a fondo, te tiramos estrategias probadas y visualizamos las situaciones más complejas. ¡Olvidate de los manuales densos!'}
               </p>
             </div>
             <div className="flex-1 flex justify-center">
               <div className="relative group">
                  <div className="absolute inset-0 bg-indigo-400 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                 <i className="fas fa-brain text-9xl text-indigo-600 relative"></i>
+                 <i className="fas fa-graduation-cap text-9xl text-indigo-600 relative"></i>
               </div>
             </div>
           </div>
