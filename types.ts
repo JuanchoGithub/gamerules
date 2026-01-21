@@ -32,15 +32,18 @@ export interface Scenario {
   title: string;
   description: string;
   boardConfig?: string;
+  isPitfall?: boolean;
 }
 
 export interface RuleDetail {
+  title: string;
   text: string;
   boardConfig?: string;
 }
 
 export interface RuleContent {
   overview: string;
+  manual: string; // Detailed conversational guide
   setup: string;
   rules: RuleDetail[];
   houseRules: string[];

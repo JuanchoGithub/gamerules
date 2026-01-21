@@ -4,458 +4,492 @@ import { GameDataMap } from '../types';
 export const GAME_CONTENT: GameDataMap = {
   chess: {
     en: {
-      overview: "Chess is a centuries-old strategy game. The goal is simple: corner the opponent's King so it has no escape (Checkmate).",
-      setup: "Bottom-right square must be white. Queens on their own color. Rooks in corners, Knights next, then Bishops. King & Queen in center.",
+      overview: "Chess is a magical battle where you command an army of 16 characters. Think of it as a super-slow puzzle where you try to outsmart your friend.",
+      manual: "Chess is the ultimate game of wits! It’s played on a grid of 64 squares. One player has a White army, and the other has a Black army. \n\nEvery piece has its own personality and way of moving. Some are fast, like the Queen, and some are tricky, like the Knight who can jump! \n\nThe game ends when one player's King is trapped and can't move away from an attack. This is called 'Checkmate'. If you are just starting, don't worry about winning—focus on how your pieces work together as a team!",
+      setup: "Follow these steps to prepare your battlefield from scratch:\n\n1. ORIENTING THE BOARD: Lay the board between you and your opponent. Look at the square in the bottom-right corner closest to you. It MUST be a light-colored (white) square. If it's dark, rotate the board 90 degrees.\n\n2. THE PAWNS (Front Line): Take your 8 small Pawns. Place them in a single row on the second horizontal line of squares from your side. This leaves the very first row empty for now.\n\n3. THE ROOKS (The Corners): Place your two Rooks (they look like little castles) on the two squares at the very ends of your first row (bottom-left and bottom-right).\n\n4. THE KNIGHTS (The Horses): Place your two Knights right next to the Rooks.\n\n5. THE BISHOPS (The Tall Hats): Place your two Bishops right next to the Knights. You now have two squares left in the middle of the first row.\n\n6. THE QUEEN: Important! The Queen always starts on the square that matches her color. If you have the white pieces, put your Queen on the light square in the middle. If you have the black pieces, put her on the dark square. Remember: 'Queen on her own color'.\n\n7. THE KING: Place your King on the last remaining square next to the Queen. He will be on a square of the opposite color (White King on a dark square).",
       rules: [
-        { text: "The King moves one square in any direction.", boardConfig: "chess_king_move" },
-        { text: "The Queen moves any number of squares in any straight or diagonal line.", boardConfig: "chess_queen_move" },
-        { text: "Rooks move straight (ranks/files). Bishops move diagonally.", boardConfig: "chess_rook_bishop" },
-        { text: "Knights move in an 'L' shape and are the only pieces that can jump over others.", boardConfig: "chess_knight_move" },
-        { text: "Pawns move forward 1 square (2 on first move) and capture diagonally.", boardConfig: "chess_pawn_move" },
-        { text: "En Passant: A special pawn capture that occurs when a pawn moves two squares and lands next to an enemy pawn.", boardConfig: "chess_en_passant" },
-        { text: "Promotion: Reach the 8th rank with a pawn to turn it into any piece (usually a Queen).", boardConfig: "chess_promotion" },
-        { text: "Stalemate: When a player has no legal moves but isn't in check. The game is a draw.", boardConfig: "chess_stalemate" }
+        { title: "The Pawn (The Brave Soldier)", text: "Pawns move forward 1 square. On their very first move, they can leap 2 squares! They are the only pieces that capture differently: they attack diagonally. If they reach the end of the board, they transform into any piece you want (usually a Queen)!", boardConfig: "chess_pawn_move" },
+        { title: "The King (The Team Captain)", text: "The King is the most important piece. He moves only 1 square in any direction. You must protect him! If he's attacked, it's 'Check'. If he can't escape, it's 'Checkmate'.", boardConfig: "chess_king_move" },
+        { title: "The Queen (The Super Hero)", text: "The Queen is the most powerful! She can move any number of squares in any straight or diagonal direction. She's like the Rook and Bishop combined.", boardConfig: "chess_queen_move" },
+        { title: "The Knight (The Jumping Horse)", text: "Knights are special! They move in an 'L' shape (two squares one way, then one square to the side). They are the only pieces that can jump over other pieces.", boardConfig: "chess_knight_move" },
+        { title: "The Rook (The Castle Wall)", text: "Rooks move as many squares as they want, but only in straight lines (up, down, left, right). They are very strong in the end-game!", boardConfig: "chess_rook_bishop" },
+        { title: "The Bishop (The Diagonal Scout)", text: "Bishops stay on their own color square for the whole game. They move as many squares as they want, but only on diagonals.", boardConfig: "chess_rook_bishop" }
       ],
       houseRules: [
-        "No-Clock Play: Take your time to think, common in casual home games.",
-        "Take-backsies: Allowing one undo per game for beginners.",
-        "Touch-Move: If you touch a piece, you must move it (Strict house rule)."
+        "Take-backs: In casual games, allow your child to undo a move if they see a mistake right away.",
+        "No Clock: Don't use a timer. Let the thinking process happen naturally!",
+        "Touch-to-Move: Once you touch a piece, you must move it. This teaches careful observation."
       ],
-      kidFriendly: "Play 'Pawn Race': First one to get a pawn to the other side wins. No other pieces involved!",
+      kidFriendly: "Play 'The Pawn Race'! Set up only the pawns. The first player to reach the other side with one pawn wins. This is the best way to learn how pawns move and capture without the confusing pieces.",
       strategies: [
-        "Control the center (e4, d4 squares).",
-        "Develop minor pieces (Knights/Bishops) before moving the Queen.",
-        "Castle early to protect the King."
+        "Castle Early: It's like building a fortress for your King.",
+        "Control the Center: The four squares in the middle are the high ground!",
+        "Don't bring your Queen out too early: She might get chased around by weaker pieces."
       ],
-      pitfalls: ["Scholar's Mate (4-move loss)", "Leaving pieces 'hanging' (unprotected)"],
+      pitfalls: [
+        "Leaving a piece 'hanging': Forgetting to protect a piece after you move it.",
+        "Scholar's Mate: Losing in just 4 moves. Keep an eye on the f7 square!"
+      ],
       stepByStep: [
-        { round: 1, description: "White opens e4, Black responds e5. Controlling the center is priority #1.", boardConfig: "chess_round1" },
-        { round: 2, description: "Nf3 attacks e5, Nc6 defends. Knights before Bishops!", boardConfig: "chess_round2" },
-        { round: 3, description: "Bc4 eyes f7, Nf6 prepares for counter-play.", boardConfig: "chess_round3" },
-        { round: 4, description: "O-O (Kingside Castle). King is safe, Rook is active.", boardConfig: "chess_round4" }
+        { round: 1, description: "The Opening: White moves a center pawn to free the Queen and Bishop. Black does the same.", boardConfig: "chess_round1" },
+        { round: 2, description: "Bringing out the Knights: Knights are great at defending the center early on.", boardConfig: "chess_round2" },
+        { round: 3, description: "Developing Bishops: Get your Bishops off the back row so they can see the whole board.", boardConfig: "chess_round3" },
+        { round: 4, description: "The Castle: Move the King to safety and bring the Rook into the middle.", boardConfig: "chess_round4" }
       ],
       scenarios: [
-        { title: "Castling", description: "King moves two squares, Rook jumps over. Neither can have moved before!", boardConfig: "chess_castling" },
-        { title: "Scholar's Mate", description: "The classic trap for beginners using Queen and Bishop.", boardConfig: "chess_scholar" }
+        { title: "En Passant", description: "A weird rule! If a pawn jumps 2 squares and lands next to yours, you can capture it as if it only moved 1 square.", boardConfig: "chess_en_passant" },
+        { title: "Stalemate", description: "When it's your turn, you aren't in 'Check', but you have NO legal moves. The game is a draw (Nobody wins).", boardConfig: "chess_stalemate" },
+        { title: "Scholar's Mate", description: "The fastest way to lose! Watch out when your opponent brings the Queen and Bishop together to attack f7.", isPitfall: true, boardConfig: "chess_checkmate" }
       ],
-      faqs: [{ question: "Can a King capture?", answer: "Yes, as long as it doesn't move into check!" }]
+      faqs: [
+        { question: "Can a King capture the Queen?", answer: "Yes, as long as the Queen isn't protected by another piece!" },
+        { question: "Can I have two Queens?", answer: "Yes! If your pawn reaches the end, you can promote it to a second Queen." }
+      ]
     },
     'es-ar': {
-      overview: "El ajedrez es el juego de mesa más famoso del mundo. El objetivo es dar 'Jaque Mate' al Rey enemigo.",
-      setup: "Cuadradito blanco abajo a la derecha. La Dama en su color. Torres en las esquinas, al lado los Caballos y después los Alfiles.",
+      overview: "El ajedrez es como una batalla de superhéroes en un tablero de 64 cuadraditos. ¡Es el juego de ingenio más famoso del mundo!",
+      manual: "¡Hola! ¿Listo para convertirte en un Gran Maestro? El ajedrez es genial porque cada pieza tiene su 'superpoder'. \n\nSe juega entre dos personas: uno maneja las blancas y el otro las negras. El objetivo no es comerse todas las piezas, sino atrapar al Rey del otro. Cuando el Rey no tiene escapatoria, se dice 'Jaque Mate'. \n\nAl principio parece difícil, pero lo más importante es aprender cómo se mueve cada personaje y cómo se ayudan entre ellos. ¡Fijate bien antes de mover porque una vez que soltás la pieza, ya está!",
+      setup: "Seguí estos pasos para armar tu campo de batalla desde cero:\n\n1. ACOMODAR EL TABLERO: Ponelo entre los dos jugadores. Mirá el casillero de la punta de abajo a tu derecha. SÍ O SÍ tiene que ser de color claro (blanco). Si es oscuro, girá el tablero 90 grados.\n\n2. LOS PEONES (Primera Línea): Agarrá tus 8 peones. Ponelos todos en fila en la segunda línea de cuadraditos contando desde tu lado.\n\n3. LAS TORRES (Las Puntas): Poné las dos torres (las que parecen castillos) en los dos cuadraditos de las puntas de la primera fila (abajo a la izquierda y abajo a la derecha).\n\n4. LOS CABALLOS: Ponelos justo al lado de las torres.\n\n5. LOS ALFILES: Ponelos al lado de los caballos. Ahora te quedan solo dos lugares vacíos en el medio de la primera fila.\n\n6. LA DAMA: ¡Importante! La Dama (Reina) siempre va en el cuadradito de su mismo color. Si jugás con las blancas, ponela en el blanco del medio. Si sos las negras, en el negro. Acordate: 'La Reina en su color'.\n\n7. EL REY: Ponelo en el último lugar que sobra, al lado de su Reina. ¡Ejército listo!",
       rules: [
-        { text: "El Rey mueve un casillero para cualquier lado.", boardConfig: "chess_king_move" },
-        { text: "La Dama mueve todo lo que quiera en cualquier dirección recta o diagonal.", boardConfig: "chess_queen_move" },
-        { text: "Las Torres van recto. Los Alfiles solo por las diagonales de su color.", boardConfig: "chess_rook_bishop" },
-        { text: "El Caballo mueve en 'L' y es el único que salta piezas. ¡Un genio!", boardConfig: "chess_knight_move" },
-        { text: "Los Peones avanzan 1 (o 2 al principio) y comen en diagonal.", boardConfig: "chess_pawn_move" },
-        { text: "Peón al paso (En Passant): Si un peón salta dos lugares y queda al lado del tuyo, ¡te lo podés comer igual!", boardConfig: "chess_en_passant" },
-        { text: "Coronación: Si el peón llega al fondo, lo cambiás por una Dama (o lo que quieras).", boardConfig: "chess_promotion" },
-        { text: "Tablas (Empate): Si no podés mover nada pero no estás en jaque, nadie gana.", boardConfig: "chess_stalemate" }
+        { title: "El Peón (El Soldado Valiente)", text: "Avanzan de a uno. En su primer movimiento pueden saltar dos. Comen en diagonal. Si llegan al fondo, ¡se convierten en Reina!", boardConfig: "chess_pawn_move" },
+        { title: "El Rey (El Capitán)", text: "Es el que manda. Mueve solo un casillero para cualquier lado. Si lo atacan y no puede escapar, perdés. ¡Cuidalo como a tu vida!", boardConfig: "chess_king_move" },
+        { title: "La Dama (La Super Heroína)", text: "¡Es la más poderosa! Mueve todo lo que quiera en cualquier dirección (recto o diagonal).", boardConfig: "chess_queen_move" },
+        { title: "El Caballo (El Saltador)", text: "Mueve en 'L' (dos para un lado y uno para el costado). ¡Es el único que puede saltar por encima de otras fichas!", boardConfig: "chess_knight_move" },
+        { title: "La Torre (El Muro)", text: "Mueve recto (filas y columnas) todo lo que quiera. Son muy fuertes al final del juego.", boardConfig: "chess_rook_bishop" },
+        { title: "El Alfil (El Explorador)", text: "Mueve solo en diagonal y nunca cambia de color de casillero.", boardConfig: "chess_rook_bishop" }
       ],
       houseRules: [
-        "Pieza tocada, pieza movida: Si la tocaste, tenés que jugar esa.",
-        "El 'Vale Cuatro': A veces se juega con revancha obligatoria.",
-        "Reloj de cocina: Si no hay reloj oficial, se usa el celu o se juega 'a ojo'."
+        "Pieza tocada, pieza movida: Si la tocaste, la tenés que jugar. ¡Nada de arrepentirse!",
+        "Vale Cuatro: Si juegan varias partidas, el que perdió la anterior arranca con blancas.",
+        "Alfajor de premio: ¡El que gana elige qué merendar!"
       ],
-      kidFriendly: "Guerra de Peones: Pongan solo los peones. El primero que llega al otro lado, gana un alfajor.",
+      kidFriendly: "¡Guerra de Peones! Pongan solo los peones. El primero que llega al otro lado del tablero gana un premio. Es la mejor forma de aprender cómo avanzan y cómo comen sin marearse con tantas piezas.",
       strategies: [
-        "No saqués la Dama muy rápido porque te la van a pasear.",
-        "Enrocate de una para que no te maten al Rey en el medio.",
-        "Fijate siempre qué te está amenazando el otro antes de mover."
+        "Enrocate rápido: Es como meter al Rey en un castillo de piedra.",
+        "Dominá el centro: Los 4 cuadraditos del medio son como la cima de la montaña. ¡El que está ahí manda!",
+        "No saqués la Reina de entrada: Te la van a pasear por todo el tablero y la podés perder."
       ],
-      pitfalls: ["El Mate del Pastor (te ganan en 4)", "Colgar la Dama por no mirar bien el tablero"],
+      pitfalls: [
+        "Colgar una pieza: Dejar una pieza regalada porque te olvidaste de que te la podían comer.",
+        "Mate del Pastor: Te ganan en 4 jugadas si no prestás atención al peón que está al lado del Rey."
+      ],
       stepByStep: [
-        { round: 1, description: "e4 y e5. La clásica apertura para liberar al Alfil y la Dama.", boardConfig: "chess_round1" },
-        { round: 2, description: "Caballo f3 ataca, Caballo c6 defiende. Desarrollo básico.", boardConfig: "chess_round2" },
-        { round: 3, description: "Alfil c4 apunta al punto f7. ¡Cuidado que se viene el mate!", boardConfig: "chess_round3" },
-        { round: 4, description: "Enroque corto. El Rey se va a dormir la siesta y la Torre entra al juego.", boardConfig: "chess_round4" }
+        { round: 1, description: "La Apertura: Movés un peón del medio para que la Reina y el Alfil puedan salir a jugar.", boardConfig: "chess_round1" },
+        { round: 2, description: "Salen los Caballos: Son ideales para defender el centro al principio.", boardConfig: "chess_round2" },
+        { round: 3, description: "Desarrollo de Alfiles: Sacalos de la primera fila para que vean todo el tablero.", boardConfig: "chess_round3" },
+        { round: 4, description: "El Enroque: Ponés al Rey a salvo y traés la Torre al medio de la batalla.", boardConfig: "chess_round4" }
       ],
       scenarios: [
-        { title: "El Enroque", description: "El Rey mueve dos y la Torre salta. ¡Esencial!", boardConfig: "chess_castling" },
-        { title: "Mate del Pastor", description: "Cómo evitar que te ganen en 4 jugadas de forma vergonzosa.", boardConfig: "chess_scholar" }
+        { title: "Peón al Paso", description: "Una regla loca: si un peón del otro salta dos lugares y queda al lado del tuyo, ¡te lo podés comer como si hubiera movido uno solo!", boardConfig: "chess_en_passant" },
+        { title: "Tablas (Empate)", description: "Cuando no te podés mover pero no estás en Jaque. Nadie gana, ¡se dan la mano y otra partida!", boardConfig: "chess_stalemate" },
+        { title: "Mate del Pastor", description: "¡Cuidado! Si te descuidás, la Reina y el Alfil te liquidan en un segundo al principio.", isPitfall: true, boardConfig: "chess_checkmate" }
       ],
-      faqs: [{ question: "¿El Rey puede comer?", answer: "Sí, el Rey come como cualquier otra pieza si no se pone en peligro." }]
+      faqs: [
+        { question: "¿El Rey puede comer a la Reina?", answer: "¡Sí! Mientras la Reina no esté protegida por otra pieza, el Rey se la puede comer." },
+        { question: "¿Puedo tener dos Reinas?", answer: "¡Claro! Si tu peón llega al final, lo cambiás por otra Reina y hacés desastres." }
+      ]
     }
   },
   checkers: {
     en: {
-      overview: "Standard 8x8 Checkers (Draughts). Capture all enemy pieces by jumping over them.",
-      setup: "12 pieces per player on dark squares only. Three rows each.",
+      overview: "Checkers is a game of hunger! You want to jump over your opponent's pieces and capture them all.",
+      manual: "In Checkers, you start with 12 pieces. Everyone stays on the DARK squares. You can only move forward diagonally. \n\nBut here's the fun part: if an enemy piece is in front of you and there's an empty space behind it, you MUST jump over them and take their piece! It's like a game of leapfrog where you keep the frog you jumped over. \n\nIf you reach the other side, you become a KING and get a second piece stacked on top. Kings can move backwards too!",
+      setup: "Preparing the Checkers board is simple but precise:\n\n1. THE SQUARES: Look at the board. You will ONLY use the dark-colored squares for the entire game. Orient the board so that you have a dark square in your bottom-left corner.\n\n2. THE PIECES: You have 12 round checkers. Place them ONLY on the dark squares.\n\n3. THE ROWS: Fill the first 3 rows of dark squares on your side. Row 1 (closest to you) will have 4 pieces, Row 2 will have 4, and Row 3 will have 4.\n\n4. THE MIDDLE: This setup leaves two empty horizontal rows in the very center of the board. This is 'No Man's Land' where you'll first meet your opponent.",
       rules: [
-        { text: "Move diagonally forward to an empty dark square.", boardConfig: "checkers_move" },
-        { text: "Jumping: If an enemy piece is adjacent and the square behind is empty, you MUST jump and capture.", boardConfig: "checkers_jump" },
-        { text: "Multiple Jumps: If you can jump again after landing, you must continue the turn until no more jumps remain.", boardConfig: "checkers_multi_jump" },
-        { text: "Kings: Reach the back row to become a King. Kings can move both forward and backward.", boardConfig: "checkers_king_move" },
-        { text: "Mandatory Capture: In official rules, if you can jump, you have no choice—you must take the piece.", boardConfig: "checkers_jump_mandatory" }
+        { title: "Moving Forward", text: "Regular pieces always move diagonally forward one square at a time.", boardConfig: "checkers_move" },
+        { title: "The Jump", text: "If you can jump an enemy piece, you MUST do it. If you land and can jump another one, you keep going!", boardConfig: "checkers_jump" },
+        { title: "Becoming King", text: "When you reach the last row, your piece is 'Crowned'. It can now move and jump backwards.", boardConfig: "checkers_king_move" },
+        { title: "Winning", text: "You win by capturing all enemy pieces or blocking them so they can't move.", boardConfig: "checkers_setup" }
       ],
       houseRules: [
-        "The Huff (Soplada): If you forget to jump, the opponent can 'blow' your piece off the board.",
-        "Flying Kings: Kings move any distance along a diagonal.",
-        "Must capture maximum: If multiple jump paths exist, you must take the path with the most pieces."
+        "The Huff: If a player forgets to jump, the opponent can 'blow' (huff) that piece off the board.",
+        "Flying Kings: Kings can move any distance on a diagonal line (like a Bishop in Chess).",
+        "Multiple Jumps: If you have two ways to jump, you must take the path that captures the most pieces."
       ],
-      kidFriendly: "Allow backwards moves for everyone to make the game faster and more chaotic!",
-      strategies: ["Keep your back row intact.", "Control the center.", "Sacrifice one piece to gain two."],
-      pitfalls: ["Leaving the center weak.", "Forgetting that jumps are mandatory."],
+      kidFriendly: "Let everyone move backwards from the start! It makes the game much faster and easier for younger kids to understand the 'capture' logic without getting stuck.",
+      strategies: [
+        "Protect the Back Row: This prevents your opponent from getting Kings.",
+        "Control the Center: Don't stay on the edges where you have fewer move options.",
+        "The Sacrifice: Sometimes giving up one piece helps you capture two!"
+      ],
+      pitfalls: [
+        "Forgetting mandatory jumps.",
+        "Moving too many pieces from the back row too early.",
+        "Leaving gaps where the opponent can double-jump you."
+      ],
       stepByStep: [
-        { round: 1, description: "Both players move their side pieces. Keeping the center solid is key.", boardConfig: "checkers_round1" },
-        { round: 2, description: "First contact. The capture is mandatory, leading to an exchange.", boardConfig: "checkers_round2" },
-        { round: 3, description: "Setting up a trap. Sacrifice a piece to open up a double jump.", boardConfig: "checkers_round3" },
-        { round: 4, description: "The breakthrough. One piece reaches the end to become a King.", boardConfig: "checkers_round4" }
+        { round: 1, description: "Initial setup moves. Everyone moves towards the center.", boardConfig: "checkers_round1" },
+        { round: 2, description: "The first contact. Someone is forced to jump!", boardConfig: "checkers_round2" },
+        { round: 3, description: "Setting a trap for a double jump.", boardConfig: "checkers_round3" },
+        { round: 4, description: "Breaking through to get a King.", boardConfig: "checkers_round4" }
       ],
       scenarios: [
-        { title: "Double Jump", description: "Chain reactions are the most satisfying part of checkers!", boardConfig: "checkers_double" },
-        { title: "Trap Setting", description: "Lure the opponent into a mandatory jump that benefits you.", boardConfig: "checkers_trap" }
+        { title: "Double Jump", description: "The best feeling in checkers! Jumping two or three pieces in one go.", boardConfig: "checkers_double" },
+        { title: "The Blockade", description: "You don't always have to capture; sometimes you win by making sure the other player can't move a single piece.", boardConfig: "checkers_setup" }
       ],
-      faqs: [{ question: "Is jumping mandatory?", answer: "In almost every professional version, yes." }]
+      faqs: [
+        { question: "Is jumping really mandatory?", answer: "Yes, in official rules, you don't have a choice!" }
+      ]
     },
     'es-ar': {
-      overview: "Las Damas de toda la vida. Se juega en los cuadraditos oscuros y el que se queda sin fichas, pierde.",
-      setup: "12 fichas por persona. Se usan solo las casillas negras. Tres filas para cada uno.",
+      overview: "¡Las Damas son pura hambre! Tenés que saltar por encima de las fichas del otro y comértelas todas.",
+      manual: "En las Damas, arrancás con 12 fichas. Todos se quedan siempre en los cuadraditos OSCUROS. Al principio, solo podés avanzar en diagonal. \n\nPero lo más divertido es esto: si tenés una ficha del otro adelante y hay un hueco atrás, ¡TENÉS que saltar y comértela! Es obligatorio. Si después de saltar podés volver a saltar a otra ficha, seguís viaje hasta que no quede nadie. \n\nSi llegás al fondo, te convertís en REINA y te ponen otra ficha arriba. ¡Las Reinas pueden ir para atrás también!",
+      setup: "Preparar el tablero de Damas es fácil pero tiene su truco:\n\n1. LOS CASILLEROS: Mirá el tablero. SOLO vas a usar los cuadraditos oscuros en todo el juego. Acomodalo para que tengas un cuadradito OSCURO en tu esquina de abajo a la izquierda.\n\n2. LAS FICHAS: Tenés 12 fichas redondas. Ponelas SÓLO en los cuadraditos oscuros.\n\n3. LAS FILAS: Llená las primeras 3 filas de cuadraditos oscuros de tu lado. La fila 1 (la más cerca tuyo) tiene 4 fichas, la fila 2 tiene 4 y la fila 3 tiene 4.\n\n4. EL MEDIO: Te tienen que quedar dos filas vacías en el centro del tablero. Esa es la 'tierra de nadie' donde se van a cruzar con el otro jugador.",
       rules: [
-        { text: "Movés siempre en diagonal hacia adelante, un casillero por vez.", boardConfig: "checkers_move" },
-        { text: "Para comer, tenés que saltar por encima de la ficha del otro. ¡Es obligatorio!", boardConfig: "checkers_jump" },
-        { text: "Soplada: Si no comés cuando podés, el otro te puede sacar la ficha ('soplar').", boardConfig: "checkers_jump_mandatory" },
-        { text: "Saltos múltiples: Si podés seguir comiendo después de saltar, tenés que seguir hasta que no queden más.", boardConfig: "checkers_multi_jump" },
-        { text: "La Reina (Dama): Cuando llegás al fondo, tu ficha se 'corona'. Ahora podés mover para adelante y para atrás.", boardConfig: "checkers_king_move" }
+        { title: "Avanzar", text: "Las fichas comunes siempre van en diagonal hacia adelante, de a un cuadradito.", boardConfig: "checkers_move" },
+        { title: "El Salto (Comer)", text: "Si podés comer, tenés que hacerlo. ¡Es ley! Si podés seguir comiendo en el mismo turno, seguís saltando.", boardConfig: "checkers_jump" },
+        { title: "La Reina", text: "Cuando llegás al fondo, te coronan. Ahora podés moverte para adelante y para atrás como un campeón.", boardConfig: "checkers_king_move" },
+        { title: "Ganar", text: "Gana el que se come todas las fichas del otro o el que lo deja bloqueado sin poder mover.", boardConfig: "checkers_setup" }
       ],
       houseRules: [
-        "Dama Voladora: La Reina puede mover todos los casilleros que quiera en diagonal, no solo uno.",
-        "Comer el máximo: Si tenés dos opciones para comer, tenés que elegir la que te permite comer más piezas.",
-        "Sin soplada: En los torneos modernos no se sopla, es obligatorio volver atrás y hacer el movimiento de captura."
+        "La Soplada: Si el otro no comió cuando podía, ¡le soplás la ficha y se la sacás del tablero!",
+        "Dama Voladora: La Reina puede mover todos los casilleros que quiera en diagonal (estilo Alfil).",
+        "Comer el máximo: Si tenés dos opciones para comer, tenés que elegir la que te permita comer más piezas."
       ],
-      kidFriendly: "¡Cualquier ficha puede ir para atrás! Así el juego es más dinámico para los más chiquitos.",
-      strategies: ["Tratá de no desarmar la fila del fondo muy rápido.", "Mantené las fichas juntas para que no te coman de a una.", "Regalá una ficha para armar un hueco y comer dos."],
-      pitfalls: ["Olvidarse que comer es obligatorio.", "Dejar las casillas del centro vacías."],
+      kidFriendly: "¡Cualquiera puede ir para atrás! Para los más chiquitos es mejor dejar que todas las fichas vuelvan, así el juego no se traba tanto y es más movido.",
+      strategies: [
+        "No desarmés la última fila: Si sacás las de atrás, el otro te va a meter Reinas enseisguida.",
+        "Mantené el centro: No te vayas a los costados porque tenés menos opciones para saltar.",
+        "Regalá una ficha: A veces conviene perder una para armar una jugada y comerle dos al otro."
+      ],
+      pitfalls: [
+        "Olvidarse de que comer es obligatorio.",
+        "Dejar huecos para que el otro te haga un salto doble.",
+        "Quedarse sin fichas en el medio del tablero."
+      ],
       stepByStep: [
-        { round: 1, description: "Movimientos iniciales. Todos avanzan hacia el medio cuidándose las espaldas.", boardConfig: "checkers_round1" },
-        { round: 2, description: "Primer encuentro. Se produce un cambio de fichas obligatorio.", boardConfig: "checkers_round2" },
-        { round: 3, description: "La emboscada. Preparás el terreno para un salto doble.", boardConfig: "checkers_round3" },
-        { round: 4, description: "Coronación. Una ficha logra pasar y se convierte en Dama. ¡Ahora es imparable!", boardConfig: "checkers_round4" }
+        { round: 1, description: "Movimientos de apertura. Todos avanzan hacia el medio.", boardConfig: "checkers_round1" },
+        { round: 2, description: "Primer cruce. Alguien está obligado a comer.", boardConfig: "checkers_round2" },
+        { round: 3, description: "Preparando una trampa para comer dos.", boardConfig: "checkers_round3" },
+        { round: 4, description: "Llegando al fondo para coronar Reina.", boardConfig: "checkers_round4" }
       ],
       scenarios: [
-        { title: "El Salto Doble", description: "Cuando comés dos fichas de un solo tiro. ¡Un lujo!", boardConfig: "checkers_double" },
-        { title: "La Trampa", description: "Forzás al otro a comerte una ficha para vos después comerte tres.", boardConfig: "checkers_trap" }
+        { title: "El Salto Doble", description: "¡La mejor sensación! Comer dos o tres fichas de un solo tiro.", boardConfig: "checkers_double" },
+        { title: "La Bloqueada", description: "No siempre hace falta comer todo; a veces ganás simplemente dejando al otro sin ningún movimiento posible.", boardConfig: "checkers_setup" }
       ],
-      faqs: [{ question: "¿Es obligatorio comer?", answer: "Sí, si podés comer tenés que hacerlo. Si no, ¡te soplan!" }]
+      faqs: [
+        { question: "¿Es verdad que hay que comer sí o sí?", answer: "¡Sí! En las reglas oficiales no podés elegir, tenés que saltar." }
+      ]
     }
   },
   backgammon: {
     en: {
-      overview: "Backgammon is one of the world's oldest 'Race' games. The goal is to move all 15 of your checkers into your Home Board and then 'Bear them Off' (remove them) before your opponent.",
-      setup: "The board has 24 triangles called 'Points'. Each player starts with 15 checkers: 2 on Point 24, 5 on Point 13, 3 on Point 8, and 5 on Point 6. White moves from 1 to 24, Black moves from 24 to 1.",
+      overview: "Backgammon is a race where 15 pieces run toward their 'Home' while trying not to get kicked out by the opponent.",
+      manual: "Imagine two athletes running a circular track in opposite directions. That's Backgammon! \n\nYou roll two dice. Each die tells you how many triangles (steps) you can move your pieces. You want to get all 15 of your checkers into your 'Home Board' and then off the board completely.\n\nBut here's the catch: if you leave a checker alone on a triangle (called a 'Blot'), your opponent can land on it. Your piece gets 'hit' and sent to the BAR—the wooden divider in the middle of the board. You must then restart that piece from the very beginning!",
+      setup: "Backgammon has a very specific setup. Let's orient ourselves first:\n\n1. THE BOARD REGIONS: The board is split in half by a vertical strip called the BAR. \n   - Your HOME BOARD (Inner Board) is the group of 6 triangles on your BOTTOM-RIGHT side.\n   - Your OUTER BOARD is the group of 6 triangles on your BOTTOM-LEFT side.\n   - The opponent's Home Board is directly across from yours (TOP-RIGHT).\n\n2. PLACING THE PIECES (Assuming you are moving towards your bottom-right home):\n   - Point 24 (Top-Left corner): Place 2 checkers. This is your starting point.\n   - Point 13 (Bottom-Left corner triangle): Place 5 checkers.\n   - Point 8 (5th triangle from left, bottom side): Place 3 checkers.\n   - Point 6 (1st triangle from the Bar, bottom-right side): Place 5 checkers.\n\n3. MOVEMENT DIRECTION: You move your pieces in a horseshoe shape: starting from the TOP-LEFT, moving across the TOP to the right, then jumping down to the BOTTOM-RIGHT and heading toward the BAR. Your opponent does the exact opposite!",
       rules: [
-        { text: "Movement: Roll two dice. You can move one checker for each die number, or one checker for the total sum.", boardConfig: "bg_setup" },
-        { text: "Doubles: If you roll the same number (e.g., 5-5), you move that number FOUR times.", boardConfig: "bg_doubles" },
-        { text: "Closed Points: You cannot land on a point occupied by 2 or more of your opponent's checkers.", boardConfig: "bg_closed" },
-        { text: "Hitting: Land on a single enemy checker (a 'Blot') to send it to the Bar. They must restart from the beginning.", boardConfig: "bg_hit" },
-        { text: "Entering: If you have a checker on the Bar, you must roll and enter it into the opponent's Home Board before moving anything else.", boardConfig: "bg_bar_reentry" },
-        { text: "Bearing Off: Once all 15 checkers are in your Home Board (Points 1-6), you can start removing them based on your dice rolls.", boardConfig: "bg_bearing_off" }
+        { title: "Moving with Dice", text: "Roll 2 dice. If you roll a 3 and a 5, you can move one piece 3 spaces and another 5, or one piece a total of 8. If you roll DOUBLE (e.g., 4-4), you move FOUR times!", boardConfig: "bg_setup" },
+        { title: "The Bar & Re-entry", text: "If your piece is 'hit', it sits on the BAR (the center strip). You cannot move any other pieces until this piece 'enters' the opponent's home board via a dice roll.", boardConfig: "bg_bar_reentry" },
+        { title: "Hitting a Blot", text: "Landing on a triangle with only ONE opponent piece sends it to the bar. Triangles with 2 or more pieces are 'safe' and cannot be landed on by the opponent.", boardConfig: "bg_hit" },
+        { title: "Bearing Off", text: "Once all 15 pieces are inside your 6 Home Board triangles, you can start removing them from the board. First to remove all 15 wins!", boardConfig: "bg_bearing_off" }
       ],
       houseRules: [
-        "The Crawford Rule: Prevents use of the doubling cube for one game when a player is one point away from winning the match.",
-        "Automatic Doubles: If both players roll the same number for the starting move, the stakes are doubled.",
-        "Beaver: A player who is doubled can immediately 'Beaver', doubling the stakes again while keeping the cube."
+        "The Crawford Rule: No doubling allowed for one game when someone is about to win the match.",
+        "Automatic Doubles: If you both roll the same number for the first move, double the points!",
+        "Speedy Start: Allow players to move pieces into their home board faster to reduce game time."
       ],
-      kidFriendly: "Simple Race: Forget about hitting and the bar. Just focus on moving the pieces home and counting the dice. First one to empty the board wins!",
+      kidFriendly: "The 'Safe Journey' Mode: Tell kids that two pieces together are 'holding hands' and are safe. If a piece is alone, it's 'lost' and needs to go back to the start (the Bar) to find its way again.",
       strategies: [
-        "The 'Golden Point': Focus on taking control of your Point 5 or the opponent's Point 20 early.",
-        "Safe Points: Try to have at least 2 checkers on any point you land on so they can't be 'hit'.",
-        "The Blitz: Try to hit as many of your opponent's blots as possible to keep them on the bar while you close your board."
+        "Build Anchors: Try to get two pieces on triangles in your opponent's home board so you have a safe place to return from the bar.",
+        "The Prime: Try to occupy 6 triangles in a row. This creates a wall the opponent cannot jump over!",
+        "Don't leave Blots: Try to always move pieces in pairs so they are never 'hit'."
       ],
       pitfalls: [
-        "Leaving 'Blots' (single checkers) unprotected in the late game.",
-        "Getting 'trapped' behind a prime (six consecutive closed points).",
-        "Bearing off too aggressively when your opponent still has checkers in your home board."
+        "Leaving a lone piece near the opponent's pieces.",
+        "Getting 'trapped' in the opponent's home board because you didn't move early enough.",
+        "Forgetting that you move in opposite directions!"
       ],
       stepByStep: [
-        { round: 1, description: "The Setup: White pieces at the bottom, Black at top. White is moving counter-clockwise towards the bottom-right quadrant.", boardConfig: "bg_setup" },
-        { round: 2, description: "The Roll: White rolls 3 and 1. They move a checker from Pt 24 to 21, and another from Pt 8 to 7, or combined from 24 to 20.", boardConfig: "bg_round1" },
-        { round: 3, description: "The Hit: Black rolls a 2 and lands on a single White checker at Pt 20. White is sent to the Bar!", boardConfig: "bg_hit" },
-        { round: 4, description: "The Win: White has all pieces in the final 6 points and rolls a 6 and 5. Two pieces are 'Borne Off' (removed) from the board.", boardConfig: "bg_bearing_off" }
+        { round: 1, description: "Roll the dice. Move your back-most pieces forward toward your outer board.", boardConfig: "bg_setup" },
+        { round: 2, description: "The opponent leaves a 'Blot' (one piece alone). You land on it! It goes to the Bar.", boardConfig: "bg_hit" },
+        { round: 3, description: "The opponent rolls to enter from the Bar. They land in your home board.", boardConfig: "bg_bar_reentry" },
+        { round: 4, description: "You have all pieces home. Roll and remove them (Bearing off).", boardConfig: "bg_bearing_off" }
       ],
       scenarios: [
-        { title: "The Bar", description: "When hit, you must place your checker on the center bar. You can't move other pieces until this one re-enters.", boardConfig: "bg_hit" },
-        { title: "Bearing Off", description: "The final race. You need to roll the exact number of the point (or higher) to remove a piece.", boardConfig: "bg_bearing_off" },
-        { title: "A Prime", description: "Six points in a row owned by one player. The opponent literally cannot jump over it!", boardConfig: "bg_prime" }
+        { title: "The Bar Escape", description: "When your piece is on the Bar, you must roll a number that lands on an empty triangle in the opponent's home board (the top-right 6 triangles).", boardConfig: "bg_bar_reentry" },
+        { title: "The 6-Point Prime", description: "A solid wall of 6 points. No piece can jump over this! It's a complete blockade.", boardConfig: "bg_prime" }
       ],
       faqs: [
-        { question: "Can I pass my turn?", answer: "No. You must use both numbers on the dice if legal moves exist. If only one can be played, you must play the higher number." },
-        { question: "What is a Gammon?", answer: "If you win before your opponent has borne off ANY checkers, you win double the points (a Gammon)." }
+        { question: "What is the 'Bar' exactly?", answer: "It's the vertical strip in the center that separates the left and right halves of the board. It's the 'jail' for hit pieces." }
       ]
     },
     'es-ar': {
-      overview: "El Backgammon es una carrera milenaria. El objetivo es traer tus 15 fichas a tu 'Casa' y después sacarlas del tablero antes que el otro.",
-      setup: "El tablero tiene 24 triángulos llamados 'Picos' o Puntos. Arrancás con 2 fichas en el punto 24, 5 en el 13, 3 en el 8 y 5 en el 6. Las blancas van hacia el 24, las negras hacia el 1.",
+      overview: "El Backgammon es una carrera donde 15 fichas corren hacia su 'Casa' mientras intentan que el otro no las eche del tablero.",
+      manual: "¡Imaginá a dos atletas corriendo en una pista circular en direcciones opuestas! Eso es el Backgammon. \n\nTirás dos dados. Cada dado te dice cuántos triángulos (pasos) podés mover tus fichas. Tu meta es meter tus 15 fichas en tu 'Tablero Interno' (tu Casa) y después sacarlas todas del tablero.\n\nPero ojo: si dejás una ficha sola en un triángulo, tu oponente puede caer ahí. Tu ficha es 'golpeada' y mandada al BAR (la franja de madera en el medio del tablero). ¡Vas a tener que empezar el recorrido con esa ficha desde cero!",
+      setup: "El Backgammon tiene un armado muy específico. Vamos a ubicarnos:\n\n1. LAS ZONAS DEL TABLERO: El tablero se divide al medio por una franja llamada BAR. \n   - Tu TABLERO INTERNO (Casa) son los 6 triángulos abajo a la DERECHA.\n   - Tu TABLERO EXTERNO son los 6 triángulos abajo a la IZQUIERDA.\n   - La Casa de tu rival está justo enfrente de la tuya (ARRIBA a la derecha).\n\n2. DÓNDE PONER LAS FICHAS (Suponiendo que vas hacia tu casa abajo a la derecha):\n   - Punto 24 (Esquina arriba-izquierda): Poné 2 fichas. Ahí arrancás.\n   - Punto 13 (Triángulo de la punta abajo-izquierda): Poné 5 fichas.\n   - Punto 8 (5to triángulo desde la izquierda, lado de abajo): Poné 3 fichas.\n   - Punto 6 (1er triángulo pegado al Bar, lado abajo-derecha): Poné 5 fichas.\n\n3. DIRECCIÓN DEL VIAJE: Tus fichas se mueven en forma de herradura: arrancan ARRIBA-IZQUIERDA, corren hacia la derecha por arriba, saltan al lado de ABAJO-DERECHA y vuelven hacia la izquierda (hacia el Bar). ¡Tu rival hace exactamente lo contrario!",
       rules: [
-        { text: "Movimiento: Tirás los dados y movés. Podés usar cada dado con una ficha distinta o sumar los dos para una sola.", boardConfig: "bg_setup" },
-        { text: "Dobles: Si sacás lo mismo (ej. 4 y 4), ¡movés CUATRO veces ese número! Una fiesta.", boardConfig: "bg_doubles" },
-        { text: "Puntos Bloqueados: No podés caer donde el otro tenga 2 o más fichas. Ese lugar es de él.", boardConfig: "bg_closed" },
-        { text: "Comer (Hit): Si caés donde hay una sola ficha del otro (un 'Blot'), lo mandás al Bar (al medio). Tiene que empezar de cero.", boardConfig: "bg_hit" },
-        { text: "Reingreso: Si tenés una ficha en el Bar, no podés mover nada más hasta que esa ficha vuelva a entrar al tablero del otro.", boardConfig: "bg_bar_reentry" },
-        { text: "Sacar Fichas: Cuando tenés las 15 en tu 'Casa' (los últimos 6 casilleros), empezás a sacarlas del tablero según los dados.", boardConfig: "bg_bearing_off" }
+        { title: "Mover con Dados", text: "Tirás 2 dados. Si sacás un 3 y un 5, movés una ficha 3 lugares y otra 5, o una sola 8. Si sacás DOBLES (ej. 2-2), ¡movés CUATRO veces ese número!", boardConfig: "bg_setup" },
+        { title: "El Bar y Reingreso", text: "Si te comen una ficha, va al BAR (el medio). No podés mover ninguna otra hasta que esa ficha vuelva a entrar al tablero por la casa del rival.", boardConfig: "bg_bar_reentry" },
+        { title: "Comer fichas solas", text: "Si caés en un triángulo con UNA sola ficha del otro, la mandás al Bar. Si hay 2 o más fichas, ese lugar es seguro y nadie te puede comer.", boardConfig: "bg_hit" },
+        { title: "Sacar Fichas", text: "Cuando tenés las 15 fichas en tu Casa (los 6 triángulos de abajo-derecha), podés empezar a sacarlas del tablero. El primero que saca las 15 gana.", boardConfig: "bg_bearing_off" }
       ],
       houseRules: [
-        "Regla de Crawford: En partidos a varios puntos, cuando uno está por ganar, no se puede usar el dado de doblar por una partida.",
-        "Dobles de entrada: Si en la primera tirada para ver quién empieza empatan, la partida ya vale el doble.",
-        "El 'Vale Cuatro': Aunque es del truco, acá se usa el Cubo de Doblado para subir la apuesta si sentís que vas ganando."
+        "Regla de Crawford: No se puede doblar la apuesta por un juego cuando alguien está por ganar el partido.",
+        "Dobles de entrada: Si empatan en la primera tirada, la partida ya vale doble de una.",
+        "Carrera Rápida: Dejá que las fichas entren más fácil a la casa para que el juego sea más ágil."
       ],
-      kidFriendly: "Carrera Loca: Olvidate de comer fichas y del bar. Solo tiren los dados y vean quién llega primero al final con todas las fichas. ¡Ideal para no pelearse!",
+      kidFriendly: "El Viaje Seguro: Deciles a los chicos que dos fichas juntas están 'agarradas de la mano' y nadie les puede hacer nada. Si una está sola, está 'perdida' y tiene que volver al Bar para encontrar el camino de nuevo.",
       strategies: [
-        "El Punto de Oro: Tratá de capturar el punto 5 de tu casa o el 20 del otro lo antes posible. Son clave.",
-        "No regalarse: Intentá siempre tener de a 2 fichas juntas. Una ficha sola es un 'regalito' para que el otro te coma.",
-        "Hacer una Muralla (Prime): Si lográs ocupar 6 picos seguidos, el otro no puede pasar aunque saque un 6. Queda atrapado."
+        "Hacé Anclas: Tratá de tener dos fichas juntas en la casa del rival para tener un lugar seguro donde volver si te mandan al Bar.",
+        "La Muralla: Intentá ocupar 6 triángulos seguidos. Esto crea una pared que tu rival no puede saltar ni con un milagro.",
+        "No te regales: Tratá de mover siempre de a pares para que nunca te coman fichas solas."
       ],
       pitfalls: [
-        "Dejar una ficha sola (blot) cuando el otro está por entrar del Bar.",
-        "Gastar movimientos en traer fichas que ya están seguras mientras otras están muy atrás.",
-        "No darse cuenta que el otro está por cerrar su casa y te va a dejar afuera."
+        "Dejar una ficha sola cerca de las fichas del otro.",
+        "Quedarse 'encerrado' en la casa del rival por no salir a tiempo.",
+        "¡Olvidarse de que los dos corren para lados diferentes!"
       ],
       stepByStep: [
-        { round: 1, description: "Preparación: Blancas abajo, Negras arriba. Las blancas se mueven en 'U' hacia la derecha abajo (su casa).", boardConfig: "bg_setup" },
-        { round: 2, description: "La Salida: Sacás un 4 y un 2. Movés una de la punta (24) seis lugares, o repartís el movimiento.", boardConfig: "bg_round1" },
-        { round: 3, description: "La Comida: El negro saca el número justo y cae arriba de tu ficha sola. ¡Al Bar de una!", boardConfig: "bg_hit" },
-        { round: 4, description: "El Final: Ya tenés todas en tu zona. Sacás un 6 y un 4, y retirás las dos fichas correspondientes. ¡Casi ganás!", boardConfig: "bg_bearing_off" }
+        { round: 1, description: "Tirás los dados y movés tus fichas de más atrás hacia adelante.", boardConfig: "bg_setup" },
+        { round: 2, description: "Tu rival deja una ficha sola. ¡Caés justo ahí y la mandás al medio!", boardConfig: "bg_hit" },
+        { round: 3, description: "Tu rival tira los dados para volver a entrar desde el Bar.", boardConfig: "bg_bar_reentry" },
+        { round: 4, description: "Ya tenés todas en tu casa. Ahora las empezás a sacar para ganar.", boardConfig: "bg_bearing_off" }
       ],
       scenarios: [
-        { title: "El Bar", description: "Cuando te comen, vas al medio. Tenés que sacar el número de un casillero libre del otro para volver.", boardConfig: "bg_hit" },
-        { title: "Sacar Fichas (Bearing Off)", description: "La etapa final. Necesitás los dados exactos para ir limpiando el tablero.", boardConfig: "bg_bearing_off" },
-        { title: "La Muralla (Prime)", description: "Seis puntos seguidos ocupados. Es como un muro de concreto para el oponente.", boardConfig: "bg_prime" }
+        { title: "Escape del Bar", description: "Cuando tenés una ficha en el Bar, tenés que sacar un número que caiga en un triángulo vacío de la casa del rival (los 6 de arriba a la derecha).", boardConfig: "bg_bar_reentry" },
+        { title: "La Muralla de 6", description: "Una fila de 6 triángulos ocupados. Ninguna ficha puede saltar esto. ¡Es un bloqueo total!", boardConfig: "bg_prime" }
       ],
       faqs: [
-        { question: "¿Puedo pasar el turno?", answer: "No. Si hay un movimiento legal, tenés que hacerlo sí o sí. ¡A llorar al campito!" },
-        { question: "¿Qué es un Gammon?", answer: "Si ganás y el otro no sacó NI UNA ficha, ganás doble. Si encima tiene una en tu casa o en el bar, es Backgammon (triple)." }
+        { question: "¿Qué es el 'Bar' exactamente?", answer: "Es la franja vertical en el medio del tablero que separa la izquierda de la derecha. Es como la 'cárcel' para las fichas comidas." }
       ]
     }
   },
   mancala: {
     en: {
-      overview: "Mancala (or Kalah) is a mathematical 'sowing' game of African origin. It's about counting, timing, and strategic 'harvesting' of seeds.",
-      setup: "Place 4 seeds in each of the 12 small pits. Your 'Store' (Mancala) is the large pit on your right side. You control the row of pits directly in front of you.",
+      overview: "Mancala is a game of seeds and stores. It's about counting and 'sowing' your gems to fill your treasure chest.",
+      manual: "Mancala is one of the oldest games in the world! You have two rows of small pits and two large 'Stores'. \n\nYou pick up all the seeds in one of your pits and 'sow' them one by one into the next pits. If your last seed lands in your Store, you get to play AGAIN! \n\nIf your last seed lands in an empty pit on your side, you get to 'capture' all the seeds in the pit opposite it. It's like a math puzzle where you try to get as many seeds into your Store as possible.",
+      setup: "Set up your Mancala board (often called a 'pit and pebble' game):\n\n1. THE BOARD: Place the board horizontally between the two players. It has two rows of 6 small holes (pits) and two large holes at the ends (Stores).\n\n2. YOUR SIDE: The row of 6 pits closest to you is yours. Your 'Store' is the large one to your right.\n\n3. THE SEEDS: Place 4 seeds (could be pebbles, beads, or beans) into each of the 12 small pits. \n\n4. THE GOAL: Your stores start empty. The game is all about moving these seeds from the small pits into your large treasure Store!",
       rules: [
-        { text: "The Sowing: Pick any pit on your side. Take all seeds and drop them one by one into the next pits in a counter-clockwise direction.", boardConfig: "mancala_setup" },
-        { text: "The Alleys: While sowing, include your own store, but skip the opponent's store. If you pass your own store, drop a seed in.", boardConfig: "mancala_store_hit" },
-        { text: "Free Turn (Infinite Moves): If the LAST seed of your sowing lands exactly in your own store, you immediately take another turn!", boardConfig: "mancala_free_turn" },
-        { text: "The Capture: If your last seed lands in an EMPTY pit on your side, you 'capture' that seed PLUS all seeds in the opposite pit. All go to your store.", boardConfig: "mancala_capture" },
-        { text: "Winning the Game: When all pits on one side are empty, the game ends. The other player captures all remaining seeds on their side.", boardConfig: "mancala_end" }
+        { title: "Sowing Seeds", text: "Pick any pit on your side. Take all seeds and drop them one-by-one in a counter-clockwise circle.", boardConfig: "mancala_setup" },
+        { title: "Free Turns", text: "If your last seed lands in your own Store, you take another turn immediately!", boardConfig: "mancala_free_turn" },
+        { title: "The Capture", text: "If your last seed lands in an EMPTY pit on your side, you take that seed AND all seeds from the opponent's opposite pit.", boardConfig: "mancala_capture" },
+        { title: "Game Over", text: "When one player has no seeds left in their pits, the game ends. The other player keeps whatever is left on their side.", boardConfig: "mancala_end" }
       ],
       houseRules: [
-        "Oware Variant: If you land in a pit with seeds, you pick them all up and keep going (Multi-lap sowing).",
-        "Peaceful Play: No captures allowed. Only focus on landing in the store for extra turns.",
-        "Starting Handicap: The second player starts with 1 extra seed in their store to balance the advantage."
+        "Handicap: Start with fewer seeds in one player's pits to make it easier for a beginner.",
+        "No Captures: For a peaceful game, play without the capture rule.",
+        "The Big Store: If you land in your store, get 2 seeds from the bank as a bonus."
       ],
-      kidFriendly: "The Treasure Hunt: Think of the seeds as gems and your store as your treasure chest. Try to count carefully so your 'last gem' falls into your chest for an extra turn!",
+      kidFriendly: "The Gem Collector: Use colorful beads or stones. Tell the kids they are 'planting' magic seeds and trying to get them into their 'treasure chest' (Store). Focus on the 'Free Turn' rule as it's the most rewarding part.",
       strategies: [
-        "Hoarding: Try to empty your pits closest to the opponent's side to prevent them from capturing your seeds.",
-        "The Starvation: Keep your side lean. If you have few seeds, the opponent has nothing to 'capture' from you.",
-        "The Trap: Leave one pit empty on purpose, then wait for a sowing that lands exactly there to trigger a huge capture."
+        "Target the Store: Always look for a pit that has the exact number of seeds needed to land in your Store.",
+        "Empty your side: If you empty your pits first, the game ends, and you might catch the opponent with a lot of seeds!",
+        "Defend your pits: Don't leave a single seed in a pit if the opponent has an empty one opposite it."
       ],
       pitfalls: [
-        "Feeding the Opponent: Ending your turn with a large number of seeds in a pit opposite an empty opponent pit.",
-        "Ignoring the Chain: Missing an opportunity to land in your store and get that free turn.",
-        "End-game Blindness: Cleaning your board too early when the opponent still has a massive pile of seeds left."
+        "Ignoring the free turn possibility.",
+        "Feeding the opponent: Sowing too many seeds into their side of the board.",
+        "Cleaning your board too early when the opponent still has a huge pile of seeds."
       ],
       stepByStep: [
-        { round: 1, description: "Perfect Start: Pick the 3rd pit from your right (which has 4 seeds). The 4th seed lands in your store. FREE TURN!", boardConfig: "mancala_free_turn" },
-        { round: 2, description: "Lapping Around: You pick a pit with 12+ seeds. You will sow all the way around the board and back to your side.", boardConfig: "mancala_sowing_lap" },
-        { round: 3, description: "The Grand Theft: Your last seed lands in your empty pit #2. The opponent's pit #2 has 10 seeds. You take all 11!", boardConfig: "mancala_capture" },
-        { round: 4, description: "The Sweep: You empty your side first. All remaining seeds on the opponent's side are added to their score. Calculate the winner!", boardConfig: "mancala_end" }
+        { round: 1, description: "Starting move that lands in the Store. Free Turn!", boardConfig: "mancala_free_turn" },
+        { round: 2, description: "A long sowing that goes all the way around the board.", boardConfig: "mancala_sowing_lap" },
+        { round: 3, description: "A capture! Landing in an empty pit to steal seeds.", boardConfig: "mancala_capture" },
+        { round: 4, description: "End game: Counting the seeds in the stores.", boardConfig: "mancala_end" }
       ],
       scenarios: [
-        { title: "The Double Chain", description: "Planning a move that leads to landing in the store, then choosing another pit that also lands in the store.", boardConfig: "mancala_free_turn" },
-        { title: "Defensive Sowing", description: "Deliberately choosing a pit that distributes seeds so that you have no empty pits for the opponent to exploit.", boardConfig: "mancala_setup" },
-        { title: "The Wipeout", description: "Emptying your side while the opponent is 'heavy' with seeds to force an early end-game bonus.", boardConfig: "mancala_end" }
+        { title: "The Chain Reaction", description: "Making multiple free turns in a row by counting carefully.", boardConfig: "mancala_free_turn" },
+        { title: "The Wipeout", description: "Emptying your entire row to end the game while the opponent is still 'heavy'.", boardConfig: "mancala_end" }
       ],
       faqs: [
-        { question: "What if I have no moves?", answer: "The game ends automatically. The other player gets the rest of the seeds." },
-        { question: "Do I skip my own store?", answer: "No, you always drop a seed in your own store if you pass it. You only skip the opponent's store." }
+        { question: "Do I drop seeds in the opponent's store?", answer: "No! You always skip the opponent's store." }
       ]
     },
     'es-ar': {
-      overview: "El Mancala (o Kalah) es el 'abuelo' de los juegos de mesa. Es pura estrategia, conteo y 'siembra' de semillas para llenar tu almacén.",
-      setup: "Ponés 4 semillas en cada uno de los 12 pocitos. Tu 'Almacén' (Mancala) es el hueco grande a tu derecha. Vos manejás la fila que tenés enfrente.",
+      overview: "El Mancala es el juego de la cosecha. Tenés que sembrar tus semillas para llenar tu almacén de tesoros.",
+      manual: "¡El Mancala es uno de los juegos más viejos de la humanidad! Tenés dos filas de pocitos y dos 'Almacenes' grandes a los costados. \n\nElegís un pocito de tu lado, agarrás todas las semillas y las vas 'sembrando' de a una en los siguientes huecos. Si la última semilla cae justo en tu Almacén, ¡seguís jugando vos! \n\nSi la última cae en un pocito vacío de tu lado, te 'robás' todas las del oponente que están enfrente. Es como un rompecabezas de números donde gana el que más semillas junta en su almacén.",
+      setup: "Prepará tu tablero de Mancala (un juego de 'pocitos y piedras'):\n\n1. EL TABLERO: Ponelo de forma horizontal entre los dos jugadores. Tiene dos filas de 6 pocitos chicos y dos grandes en las puntas (Almacenes).\n\n2. TU LADO: La fila de 6 pocitos que tenés más cerca es la tuya. Tu 'Almacén' es el grande que tenés a tu DERECHA.\n\n3. LAS SEMILLAS: Poné 4 semillas (pueden ser piedritas, porotos o cuentas) en cada uno de los 12 pocitos chicos.\n\n4. EL OBJETIVO: Los almacenes arrancan vacíos. La idea es ir moviendo esas semillas para meterlas en tu cofre del tesoro (tu Almacén).",
       rules: [
-        { text: "La Siembra: Elegí cualquier pocito de tu lado. Agarrá todas las semillas y andá soltando de a una en sentido antihorario.", boardConfig: "mancala_setup" },
-        { text: "Tu Almacén suma: Cuando siembras, pasás por tu almacén y dejás una semilla. ¡Al almacén del otro lo salteás siempre!", boardConfig: "mancala_store_hit" },
-        { text: "Turno Extra (El Combo): Si la ÚLTIMA semilla cae justo en tu almacén, ¡seguís jugando vos! Podés hacer jugadas infinitas.", boardConfig: "mancala_free_turn" },
-        { text: "La Captura (El Robo): Si tu última semilla cae en un pocito VACÍO de tu lado, te robás esa semilla y TODAS las del pocito de enfrente.", boardConfig: "mancala_capture" },
-        { text: "Final de Partida: Cuando alguien se queda sin semillas en sus pocitos, el juego termina. El otro suma lo que le quedó a su almacén.", boardConfig: "mancala_end" }
+        { title: "Sembrar", text: "Elegí un pocito de tu lado. Agarrá todo y soltá de a una en sentido antihorario.", boardConfig: "mancala_setup" },
+        { title: "Turno Extra", text: "Si la última semilla cae en tu Almacén, ¡jugás otra vez de una!", boardConfig: "mancala_free_turn" },
+        { title: "La Captura", text: "Si la última cae en un pocito VACÍO de tu lado, te llevás esa y todas las de enfrente.", boardConfig: "mancala_capture" },
+        { title: "Final", text: "Cuando alguien se queda sin semillas en sus pocitos, se termina todo. El otro se queda lo que le sobró.", boardConfig: "mancala_end" }
       ],
       houseRules: [
-        "Siembra Infinita: Si caés en un pocito que ya tenía semillas, las agarrás y seguís sembrando (estilo Oware).",
-        "Juego de Caballeros: Se juega sin robos, solo para ver quién tiene mejor puntería con los turnos extra.",
-        "Ventaja al Segundo: El que juega segundo arranca con una semilla de regalo en su almacén para equilibrar."
+        "Siembra Loca: Si caés en un pocito con semillas, las agarrás y seguís viaje.",
+        "Sin robos: Para jugar tranquilos, saquen la regla de la captura.",
+        "Regalo de inicio: El que va segundo arranca con una semilla más."
       ],
-      kidFriendly: "El Cofre del Tesoro: Imaginá que las semillas son diamantes. Tenés que contar bien para que el último 'diamante' caiga justo en tu cofre y así poder jugar otra vez.",
+      kidFriendly: "El Cofre del Tesoro: Usen piedritas de colores. Diganles a los chicos que están plantando diamantes y que tienen que llegar a su cofre. Lo más divertido es cuando les sale el turno extra.",
       strategies: [
-        "Vaciá el frente: Intentá que los pocitos que están cerca del almacén del otro estén vacíos para que no te pueda robar.",
-        "La Dieta: Mantené tu lado con pocas semillas. Si no tenés nada, el otro no tiene qué capturar.",
-        "La Trampa del Vacío: Dejá un pocito vacío a propósito y esperá a que una siembra larga termine justo ahí para un robo masivo."
+        "Apuntá al Almacén: Siempre buscá el pocito que tenga el número justo para caer en el Almacén.",
+        "Vaciá tu lado: Si te quedás sin nada rápido, podés ganar por sorpresa.",
+        "Cuidá tus huecos: No dejes semillas solas si el otro tiene un pocito vacío enfrente."
       ],
       pitfalls: [
-        "Darle de comer al otro: Dejar muchas semillas en un pocito que el otro puede capturar fácilmente.",
-        "Perder el hilo: No darte cuenta que tenías el número justo para caer en el almacén y ganar un turno extra.",
-        "Limpiar el tablero antes de tiempo: Si terminás vos pero el otro tiene 20 semillas en su lado, ¡se las queda todas él!"
+        "No darse cuenta de que podés repetir turno.",
+        "Pasarle demasiadas semillas al otro lado.",
+        "Terminar muy rápido cuando el otro todavía tiene una montaña de semillas."
       ],
       stepByStep: [
-        { round: 1, description: "Arranque Ideal: Elegís tu tercer pocito (tiene 4 semillas). La cuarta cae justo en el almacén. ¡TURNO EXTRA!", boardConfig: "mancala_free_turn" },
-        { round: 2, description: "Vuelta al Mundo: Agarrás un pocito con muchas semillas (13 o más) y das toda la vuelta al tablero sembrando.", boardConfig: "mancala_sowing_lap" },
-        { round: 3, description: "Robo Maestro: Tu última semilla cae en tu pocito #2 que estaba vacío. El de enfrente tenía 10. ¡Te llevás las 11!", boardConfig: "mancala_capture" },
-        { round: 4, description: "Barrida Final: Te quedaste sin semillas. El otro se suma sus sobras y contamos quién es el rey de la cosecha.", boardConfig: "mancala_end" }
+        { round: 1, description: "Jugada inicial que cae en el Almacén. ¡Repite!", boardConfig: "mancala_free_turn" },
+        { round: 2, description: "Una siembra larga que da toda la vuelta.", boardConfig: "mancala_sowing_lap" },
+        { round: 3, description: "¡Captura! Caer en un hueco vacío para robar.", boardConfig: "mancala_capture" },
+        { round: 4, description: "El recuento final de semillas.", boardConfig: "mancala_end" }
       ],
       scenarios: [
-        { title: "Encadenar Turnos", description: "Cómo pensar dos o tres jugadas por adelantado para caer siempre en el almacén.", boardConfig: "mancala_free_turn" },
-        { title: "Defensa Agresiva", description: "Sembrar de modo que el oponente no tenga huecos donde capturarte.", boardConfig: "mancala_setup" },
-        { title: "El Bonus del Final", description: "Por qué a veces es mejor NO terminar la partida si el otro tiene el campo cargado.", boardConfig: "mancala_end" }
+        { title: "Combo de Turnos", description: "Cómo encadenar dos o tres jugadas seguidas contando bien.", boardConfig: "mancala_free_turn" },
+        { title: "La Barrida", description: "Terminar tu lado justo cuando el otro está cargado de semillas.", boardConfig: "mancala_end" }
       ],
       faqs: [
-        { question: "¿Puedo pasar el turno?", answer: "No, si tenés semillas tenés que sembrar sí o sí." },
-        { question: "¿El almacén del otro existe?", answer: "Está ahí, pero vos hacés de cuenta que no. Lo saltás como si fuera lava." }
+        { question: "¿Paso por el almacén del otro?", answer: "¡No! Ese lo salteás siempre como si fuera lava." }
       ]
     }
   },
   escoba: {
     en: {
-      overview: "Escoba del 15 (Broom of 15) is a trick-taking card game played with a Spanish deck. Players try to capture cards from the table that, combined with one card from their hand, sum exactly to 15.",
-      setup: "Deal 3 cards to each player and place 4 face-up on the table. Use a 40-card Spanish deck (no 8s, 9s, or Jokers). Values: Ace=1, Jack=8, Knight=9, King=10.",
+      overview: "Escoba is the classic Spanish card game where you sweep the table! Try to sum up to 15 to win.",
+      manual: "Escoba is a fantastic game for practicing math! You use a Spanish deck of 40 cards. \n\nEach player gets 3 cards, and 4 are placed face-up on the table. Your goal is to take one card from your hand and combine it with cards on the table to sum exactly 15. \n\nIf you manage to clear all the cards from the table in one go, you shout 'ESCOBA!' (Broom!) and get a point. At the end, you count who has the most cards, most golds, and most 7s.",
+      setup: "To set up 'Escoba del 15', you need a 'Mazo Español' (Spanish Deck):\n\n1. THE DECK: Use 40 cards. There are four suits: Oros (Golds/Coins), Copas (Cups), Espadas (Swords), and Bastos (Clubs). Numbers go from 1 to 7, and then 10, 11, and 12.\n\n2. THE VALUES:\n   - Cards 1 to 7 are worth their face value.\n   - 10 (Sota/Jack) is worth 8 points.\n   - 11 (Caballo/Knight) is worth 9 points.\n   - 12 (Rey/King) is worth 10 points.\n\n3. THE DEAL: One player deals 3 cards to each person. Then, place 4 cards face-up in the middle of the table.\n\n4. THE POT: Place the remaining deck face-down. This is the draw pile for the next round of dealing once everyone uses their 3 cards.",
       rules: [
-        { text: "Sum to 15: Play one card from your hand. If it sums to 15 with one or more cards on the table, you capture them all.", boardConfig: "escoba_sum15" },
-        { text: "Escoba: If you clear all cards from the table in one move, you score an 'Escoba' (1 point). Mark it by placing a card face-up in your pile.", boardConfig: "escoba_clear" },
-        { text: "The Last Cards: The player who made the last capture of the game takes all remaining cards on the table.", boardConfig: "escoba_setup" },
-        { text: "Scoring: After the deck is empty, count points for: Most cards, Most Golds, Siete de Velas (7 of Golds), Most 7s, and each Escoba." }
+        { title: "The Sum of 15", text: "Combine one card from your hand with any number of table cards to equal 15.", boardConfig: "escoba_sum15" },
+        { title: "The Escoba", text: "If you clear the table completely, you get an Escoba point! Turn one of your captured cards face-up to remember.", boardConfig: "escoba_clear" },
+        { title: "Scoring", text: "Points go to: Most cards, Most Golds, The 7 of Golds, Most 7s, and each Escoba.", boardConfig: "escoba_setup" },
+        { title: "Last Hand", text: "The person who made the very last capture takes all remaining cards on the table.", boardConfig: "escoba_setup" }
       ],
       houseRules: [
-        "Escoba de Mano: If the 4 initial cards on the table sum to 15 or 30, the dealer scores 1 or 2 Escobas immediately.",
-        "Blind Play: In some variants, you can't see the opponent's captured cards.",
-        "Penalty: If a player fails to capture when they could have made 15, they lose points."
+        "Escoba of the Dealer: If the 4 starting cards sum to 15, the dealer gets an Escoba right away!",
+        "Double Points: The 7 of Golds counts as two points instead of one.",
+        "Penalty: If you miss a 15 you could have made, you lose a point."
       ],
-      kidFriendly: "Math Magic: Think of it as a speed-math game! Great for practicing addition while playing with cool-looking cards.",
+      kidFriendly: "The Math Challenge: Encourage kids to find all possible ways to reach 15. 'I have a 7, what do I need from the table?'. It makes mental math fun!",
       strategies: [
-        "Control the 5s and 7s: These are the most versatile cards for reaching 15.",
-        "Avoid leaving a table sum under 10: This makes it easy for the next player to clear the table.",
-        "Prioritize Golds: The '7 of Golds' is the most valuable single card in the game."
+        "Control the 7s: They are the keys to winning most of the end-game points.",
+        "Avoid leaving a '5': If there's a 5 on the table, it's very easy for the next player to sum to 15 with a 10.",
+        "Go for Golds: Collecting the gold suit (oros) is a guaranteed point."
       ],
       pitfalls: [
-        "Forgetting to check for multiple card combinations on the table.",
-        "Leading with a high card when the table is empty.",
-        "Letting the opponent take all the 7s."
+        "Discarding a card that helps the opponent make an Escoba.",
+        "Forgetting to check the sum of ALL cards on the table.",
+        "Not keeping track of the 7 of Golds."
       ],
       stepByStep: [
-        { round: 1, description: "Opening: Table has 1, 2, 7, 4. Hand has 7. 7 (hand) + 1 + 7 (table) = 15! Capture!", boardConfig: "escoba_sum15" },
-        { round: 2, description: "The Sweep: Only 8 and 7 on the table. You play an Ace (1). 8+7=15. Table cleared. ESCOBA!", boardConfig: "escoba_clear" }
+        { round: 1, description: "Hand has 7. Table has 1, 2, 5. 7+1+2+5 = 15! Capture!", boardConfig: "escoba_sum15" },
+        { round: 2, description: "Table cleared! ESCOBA!", boardConfig: "escoba_clear" }
       ],
       scenarios: [
-        { title: "The 7 of Golds", description: "Always try to capture this specific card. It counts for 3 different scoring categories!", boardConfig: "escoba_setup" },
-        { title: "Calculating the Broom", description: "Leaving a 10 on the table when you have a 5 is a classic trap.", boardConfig: "escoba_sum15" }
+        { title: "The 7 of Golds", description: "The most important card. If you see it, take it at all costs!", boardConfig: "escoba_setup" },
+        { title: "Building an Escoba", description: "Sometimes it's better to wait and let the table grow if you think you can clear it later.", boardConfig: "escoba_clear" }
       ],
-      faqs: [{ question: "What happens if I can't make 15?", answer: "You must discard one card from your hand and place it face-up on the table." }]
+      faqs: [
+        { question: "What if I can't make 15?", answer: "You must just throw one card to the table." }
+      ]
     },
     'es-ar': {
-      overview: "La Escoba del 15 es el juego de cartas más popular para jugar en familia en Argentina. Se trata de sumar 15 combinando una carta de tu mano con las de la mesa.",
-      setup: "Se reparten 3 cartas a cada uno y se ponen 4 boca arriba en la mesa. Se juega con mazo español de 40. Valores: As=1, Sota=8, Caballo=9, Rey=10.",
+      overview: "¡La Escoba es el juego de cartas más argento que hay! Sumá 15, barré la mesa y ganá puntos.",
+      manual: "¡La Escoba es genial para jugar en familia! Se usa el mazo español de 40 cartas. \n\nSe reparten 3 a cada uno y se ponen 4 en la mesa. Tu misión es agarrar una de tu mano y sumarla con las de la mesa para que den justo 15. \n\nSi lográs llevarte todas las cartas de la mesa de un solo tiro, ¡gritás 'ESCOBA!' y sumás un punto. Al final se cuentan quién tiene más cartas, más oros, el 7 de oros y los 7 en general. ¡Es pura cuenta y picardía!",
+      setup: "Para jugar a la Escoba del 15 necesitás un Mazo Español:\n\n1. EL MAZO: Se usan 40 cartas. Hay cuatro palos: Oros, Copas, Espadas y Bastos. Los números van del 1 al 7, y después saltan al 10, 11 y 12.\n\n2. LOS VALORES:\n   - Las cartas del 1 al 7 valen lo que dice el número.\n   - El 10 (Sota) vale 8 puntos.\n   - El 11 (Caballo) vale 9 puntos.\n   - El 12 (Rey) vale 10 puntos.\n\n3. EL REPARTO: El que reparte da 3 cartas a cada jugador. Después, pone 4 cartas boca arriba en el centro de la mesa.\n\n4. EL POZO: El resto del mazo queda boca abajo a un costado. Cuando todos usan sus 3 cartas, se vuelven a repartir 3 más hasta que se acabe el mazo.",
       rules: [
-        { text: "Sumar 15: Tirás una carta de tu mano. Si sumás 15 con cartas de la mesa, te las llevás todas.", boardConfig: "escoba_sum15" },
-        { text: "La Escoba: Si lográs dejar la mesa vacía de un solo tiro, ¡hacés Escoba! Vale 1 punto.", boardConfig: "escoba_clear" },
-        { text: "Última mano: El último que levantó algo en la partida se lleva lo que haya quedado sobrando en la mesa.", boardConfig: "escoba_setup" },
-        { text: "Puntaje: Se cuentan: Cantidad de cartas, cantidad de Oros, el 7 de Oros (Siete de Velas), cantidad de sietes y las Escobas." }
+        { title: "Sumar 15", text: "Usás una de tu mano y las que quieras de la mesa para llegar a 15.", boardConfig: "escoba_sum15" },
+        { title: "Hacer Escoba", text: "Si dejás la mesa vacía, ¡hiciste escoba! Poné una carta cruzada en tu pila para marcar el punto.", boardConfig: "escoba_clear" },
+        { title: "Los Puntos", text: "Se suma por: Cartas, Oros, el 7 de Oros, los Sietes y cada Escoba.", boardConfig: "escoba_setup" },
+        { title: "Última Mano", text: "El último que levantó algo se lleva lo que sobró en la mesa al final.", boardConfig: "escoba_setup" }
       ],
       houseRules: [
-        "Escoba de mano: Si las 4 cartas iniciales suman 15 o 30, el que reparte ya suma 1 o 2 escobas de una.",
-        "Partido a 15 o 21: Se suele jugar hasta que alguien llegue a esos puntos totales.",
-        "Mala jugada: Si tenés para sumar 15 y no lo hacés, te pueden penalizar si se dan cuenta."
+        "Escoba de mano: Si las 4 de la mesa ya suman 15, el que repartió se la lleva de una.",
+        "Partido a 21: El primero que llega a 21 puntos totales gana el partido.",
+        "Mala jugada: Si tenés para sumar 15 y no lo hacés, te pueden penalizar."
       ],
-      kidFriendly: "¡Cuentas Locas!: Es ideal para que los chicos practiquen sumas mientras se divierten. '¿Cuánto le falta al 7 para llegar a 15?'",
+      kidFriendly: "Cuentas Rápidas: Es ideal para que los chicos practiquen las sumas. 'Si tengo un 8, ¿cuánto me falta?'. Ayudalos a buscar todas las combinaciones posibles en la mesa.",
       strategies: [
-        "No dejes la mesa servida: Si dejás cartas que sumen poco, el que sigue te va a meter una escoba en la frente.",
-        "Cuidá los 7: Son las cartas más importantes para ganar puntos al final.",
-        "El Siete de Velas: El 7 de oros es la carta sagrada. Si la tenés, no la sueltes fácil."
+        "No regales escobas: No tires una carta que deje la mesa servida para que el otro llegue a 15 fácil.",
+        "Cuidá el 7 de oros: Es el 'Siete de Velas', la carta que más puntos te puede dar.",
+        "Juntá los sietes: Son claves para ganar la categoría de 'Sietes'."
       ],
       pitfalls: [
-        "Tirar un 5 cuando en la mesa hay un 10 (¡Escoba servida!).",
-        "Olvidarse de contar bien y dejar pasar una jugada ganadora.",
-        "Desarmar tu juego de oros por intentar hacer una escoba chica."
+        "Tirar un 5 cuando en la mesa hay un Rey (10). ¡Escoba regalada!",
+        "Olvidarse de contar bien y tirar una carta que no suma nada.",
+        "Perder el hilo de cuántos oros te llevaste."
       ],
       stepByStep: [
-        { round: 1, description: "Arranque: En la mesa hay un 1, un 2 y un 7. Vos tenés un 5. 5+7+2+1 = 15. ¡A la bolsa!", boardConfig: "escoba_sum15" },
-        { round: 2, description: "Limpieza: Queda un 8 y un 7. Tirás un As (1). 8+7+1 = 16? No! 8+7=15. ¡ESCOBA!", boardConfig: "escoba_clear" }
+        { round: 1, description: "Tenés un 7. En la mesa hay un 8. 7+8=15. ¡Adentro!", boardConfig: "escoba_sum15" },
+        { round: 2, description: "¡Mesa limpia! ¡ESCOBA!", boardConfig: "escoba_clear" }
       ],
       scenarios: [
-        { title: "El Siete de Velas", description: "Es el 7 de oros. Vale por punto de oros, punto de 7s y punto de cartas si ayuda.", boardConfig: "escoba_setup" },
-        { title: "La Trampa del 5", description: "Si tirás un 5 y en la mesa hay un Rey (10), le regalás la escoba al otro.", boardConfig: "escoba_sum15" }
+        { title: "El Siete de Velas", description: "Es el 7 de oros. Vale por punto de oros, punto de 7s y el punto propio. ¡La más buscada!", boardConfig: "escoba_setup" },
+        { title: "La Trampa del 5", description: "Si tirás un 5, asegurate de que en la mesa no haya nada que sume 10.", boardConfig: "escoba_sum15" }
       ],
-      faqs: [{ question: "¿Qué pasa si no sumo 15?", answer: "Tenés que tirar una carta a la mesa y dejarla ahí para que otro la use." }]
+      faqs: [
+        { question: "¿Qué pasa si no sumo 15?", answer: "Tenés que tirar una carta a la mesa y esperar al próximo turno." }
+      ]
     }
   },
   chinchon: {
     en: {
-      overview: "Chinchón is a matching game similar to Rummy. The goal is to form sets of identical cards or runs of cards in the same suit to reduce your points to zero.",
-      setup: "Each player gets 7 cards. One card is placed face-up to start the discard pile. Use a 40-card Spanish deck + 2 Jokers.",
+      overview: "Chinchón is a game of sets and runs. Try to group your cards and be the first to reach zero points!",
+      manual: "Chinchón is like a card puzzle. You get 7 cards and you want to organize them into 'Sets' (three of the same number) or 'Runs' (three numbers in a row of the same suit). \n\nEvery turn you take a card and throw one away. When you have almost everything organized, you can 'Close' the game. If you manage to get all 7 cards in one long run, you made a CHINCHÓN and you win instantly! It's a game of patience and watching what your friends are doing.",
+      setup: "Getting ready for Chinchón (a favorite in Spanish-speaking homes):\n\n1. THE CARDS: Use a Spanish deck (40 or 48 cards). If you have Jokers (Comodines), keep them in as wildcards.\n\n2. THE DEAL: Each player is dealt 7 cards. The dealer then places the remaining deck face-down and turns the top card face-up to start the 'Discard Pile'.\n\n3. THE GROUPS: Your goal is to arrange these 7 cards into:\n   - SETS: 3 or 4 cards with the same number (e.g., three 5s).\n   - RUNS: 3 or more consecutive numbers of the same suit (e.g., 4, 5, 6 of Swords).\n\n4. THE SCOREKEEPER: Have a pen and paper ready. In Chinchón, you want to keep your score as LOW as possible. If you reach 100 points, you are out!",
       rules: [
-        { text: "The Turn: Draw a card from the deck or the discard pile, then discard one card.", boardConfig: "chinchon_meld" },
-        { text: "Meld: A set is 3+ cards of same value. A run is 3+ consecutive cards of the same suit.", boardConfig: "chinchon_meld" },
-        { text: "Closing (Cortar): You can end the round if you have only 5 points or less left in your hand after melds.", boardConfig: "chinchon_victory" },
-        { text: "Chinchón: Form a single run of 7 cards to win instantly with -10 points!", boardConfig: "chinchon_victory" }
+        { title: "Drawing & Discarding", text: "Take a card from the deck or the pile, then throw one you don't need.", boardConfig: "chinchon_meld" },
+        { title: "Making Sets", text: "Group 3 or 4 cards of the same number (e.g., three 5s).", boardConfig: "chinchon_meld" },
+        { title: "Making Runs", text: "Group 3 or more consecutive cards of the same suit (e.g., 4, 5, 6 of swords).", boardConfig: "chinchon_meld" },
+        { title: "Closing (Cortar)", text: "End the round if you have 5 points or less left in your hand (outside of your sets).", boardConfig: "chinchon_victory" }
       ],
       houseRules: [
-        "Wildcard Joker: The Joker can replace any card in a meld, but adds 25 points if left in hand.",
-        "No-Discard Closing: You must close the game without a discard for -10 points.",
-        "Re-entry: If you reach 100 points, you can 'buy back' into the game with the same points as the highest active player."
+        "The Joker Penalty: If someone closes and you have a Joker in hand, you get 25 points!",
+        "Closing in Zero: Only allow closing if you have 0 points left (everything is in a set).",
+        "Re-entry: If you lose, you can pay a 'fee' (imaginary points) to keep playing."
       ],
-      kidFriendly: "Color Matching: For younger kids, just focus on getting 3 cards of the same suit or 3 of the same number. Don't worry about the scoring until the end!",
+      kidFriendly: "Matching Colors: For younger kids, just focus on collecting cards of the same suit. Don't worry about the math—the one with the most 'same-colored' cards wins!",
       strategies: [
-        "Keep low cards: If you can't meld everything, try to have Aces or 2s so your score doesn't skyrocket.",
-        "Watch the discards: See what your opponent is taking to avoid giving them the card they need.",
-        "Wait for the Chinchón: If you have a long run, it's worth the risk of not closing early."
+        "Discard high cards: Throw away Kings and Knights early so they don't count against you.",
+        "Don't wait forever: If you can close with 1 or 2 points, do it! Don't risk waiting for a Chinchón.",
+        "Watch the pile: If your friend takes a card from the pile, they probably need that suit!"
       ],
       pitfalls: [
-        "Holding high cards (Kings, Knights) for too long.",
-        "Discarding a card that completes an opponent's run.",
-        "Forgetting to check if you can already close the game."
+        "Holding onto a Joker for too long.",
+        "Giving your opponent exactly the card they need.",
+        "Forgetting to check if you can already close."
       ],
       stepByStep: [
-        { round: 1, description: "The Meld: You have three 4s and a run of 1, 2, 3 of clubs. Only one card left!", boardConfig: "chinchon_meld" },
-        { round: 2, description: "The Chinchón: You get the 4, 5, 6, 7 of clubs to join your 1, 2, 3. Incredible! You win!", boardConfig: "chinchon_victory" }
+        { round: 1, description: "Organizing your initial 7 cards into potential groups.", boardConfig: "chinchon_setup" },
+        { round: 2, description: "Closing the game with a low card.", boardConfig: "chinchon_meld" }
       ],
       scenarios: [
-        { title: "Closing the Game", description: "When you have a set and a run, and your remaining card is a 1. Knock on the table!", boardConfig: "chinchon_meld" },
-        { title: "The Joker Trap", description: "Having a Joker is great for melds, but it's a huge risk if someone else closes first.", boardConfig: "chinchon_setup" }
+        { title: "Chinchón!", description: "A perfect 7-card run. This is the holy grail of the game.", boardConfig: "chinchon_victory" },
+        { title: "The Joker", description: "Using a wildcard to complete your set. Very useful but dangerous!", boardConfig: "chinchon_setup" }
       ],
-      faqs: [{ question: "What is the score limit?", answer: "Usually 100 points. If you pass it, you are out!" }]
+      faqs: [
+        { question: "What is the point limit?", answer: "Usually 100. If you go over, you are out!" }
+      ]
     },
     'es-ar': {
-      overview: "El Chinchón es el juego de cartas por excelencia para las sobremesas. El objetivo es agrupar tus 7 cartas en juegos (mismos números o escaleras) para sumar la menor cantidad de puntos.",
-      setup: "Se reparten 7 cartas a cada uno. Se juega con mazo de 40 o 48 más 2 comodines. Una carta queda en el pozo.",
+      overview: "El Chinchón es el juego de las reuniones familiares. Armá tus juegos, bajá tus puntos y ganales a todos.",
+      manual: "¡El Chinchón es un clásico total! Te dan 7 cartas y tenés que armar 'Juegos'. Un juego puede ser un Trío (tres números iguales) o una Escalera (tres seguidos del mismo palo). \n\nEn cada turno agarrás una carta y tirás otra. Cuando tenés casi todo armado y te sobran 5 puntos o menos, podés 'Cortar' y terminar la ronda. Pero si lográs armar los 7 en escalera, ¡hacés CHINCHÓN! y ganás de una. Es un juego de tener paciencia y mirar qué está juntando el de al lado.",
+      setup: "Preparate para el Chinchón (infaltable en cualquier sobremesa):\n\n1. LAS CARTAS: Usá un mazo español (de 40 o 48 cartas). Si tenés Comodines, dejalos que sirven mucho.\n\n2. EL REPARTO: Se reparten 7 cartas a cada jugador. El resto del mazo va boca abajo y la primera carta se pone boca arriba para arrancar el 'Pozo'.\n\n3. LOS GRUPOS: Tu meta es acomodar esas 7 cartas en:\n   - TRÍOS: 3 o 4 cartas del mismo número (ej. tres sotas).\n   - ESCALERAS: 3 o más cartas seguidas del mismo palo (ej. 4, 5 y 6 de Espadas).\n\n4. EL PUNTAJE: Tené a mano papel y birome. Acá el que llega a 100 puntos pierde, así que tenés que tratar de mantener tu puntaje lo más BAJO posible.",
       rules: [
-        { text: "El Turno: Robás una carta del mazo o del pozo, y después tirás una al pozo.", boardConfig: "chinchon_meld" },
-        { text: "Armar Juegos: Un juego son 3 o más cartas del mismo número, o una escalera del mismo palo.", boardConfig: "chinchon_meld" },
-        { text: "Cortar: Podés terminar la ronda si te quedan 5 puntos o menos en la mano (sin contar tus juegos).", boardConfig: "chinchon_victory" },
-        { text: "Hacer Chinchón: Si armás una escalera de 7 cartas de un saque, ¡ganás el juego y restás 10 puntos!", boardConfig: "chinchon_victory" }
+        { title: "Robar y Tirar", text: "Agarrás una del mazo o del pozo, y tirás una que no te sirva.", boardConfig: "chinchon_meld" },
+        { title: "Tríos", text: "Juntá 3 o 4 cartas del mismo número.", boardConfig: "chinchon_meld" },
+        { title: "Escaleras", text: "Juntá 3 o más cartas seguidas del mismo palo (ej. 1, 2, 3 de bastos).", boardConfig: "chinchon_meld" },
+        { title: "Cortar", text: "Podés cerrar la vuelta si te encontrás con todo armado y te sobran 0 puntos.", boardConfig: "chinchon_victory" }
       ],
       houseRules: [
-        "Comodín castigado: Si te cierran y tenés el comodín en la mano sin usar, sumás 25 o 50 puntos de castigo.",
-        "Corte en 0: Muchos juegan a que solo se puede cortar si tenés 0 puntos en la mano.",
-        "Enganche: Cuando alguien pierde, puede volver a entrar al juego pagando ('engancharse') con los puntos del que va peor."
+        "Castigo por Comodín: Si te cierran y tenés el comodín en la mano, sumás 25 puntos de una.",
+        "Corte en cero: Solo se puede cortar si te encontrás con todo armado y te sobran 0 puntos.",
+        "El Enganche: Si perdés, podés volver a entrar pagando puntos."
       ],
-      kidFriendly: "Juntá Colores: Para los más chiquitos, la consigna es simplemente juntar 3 cartas del mismo dibujo o el mismo número. ¡Sin puntos complicados!",
+      kidFriendly: "Juntá Colores: Para los más chiquitos, que el objetivo sea simplemente juntar cartas del mismo dibujo. No cuenten los puntos, ¡el que tiene más cartas iguales gana!",
       strategies: [
-        "Descartate lo alto: Si tenés un Rey (10) o un Caballo (9) que no te sirve, tiralo rápido antes de que alguien corte.",
-        "No regales cartas: Si ves que el otro está juntando Espadas, no le tires la que le falta.",
-        "El As de Oros: A veces se juega que el As de Oros funciona como un comodín extra."
+        "Tirá las altas: Descartate los Reyes y Caballos rápido para no sumar mucho si te cierran.",
+        "No te duermas: Si podés cortar con pocos puntos, hacelo. No esperes al chinchón si ves que el otro está por cerrar.",
+        "Mirá el pozo: Si el otro levanta una carta del pozo, ya sabés qué está juntando. ¡No le des más de eso!"
       ],
       pitfalls: [
-        "Quedarse esperando una carta que nunca sale.",
-        "Cortar con 5 puntos cuando el otro tiene 0 y te termina ganando la ronda.",
-        "Olvidarse de acomodar las cartas para ver qué te falta."
+        "Quedarse con el comodín mucho tiempo.",
+        "Regalarle al otro justo la carta que le faltaba para la escalera.",
+        "Olvidarse de que ya tenés menos de 5 puntos para cortar."
       ],
       stepByStep: [
-        { round: 1, description: "El Juego: Tenés tres 4 y el 1, 2, 3 de Bastos. Solo te queda una Sota de Oros suelta. ¡Podés cortar!", boardConfig: "chinchon_meld" },
-        { round: 2, description: "El Gran Final: Robás el 4 de Bastos. Tenés la escalera completa del 1 al 7. ¡CHINCHÓN!", boardConfig: "chinchon_victory" }
+        { round: 1, description: "Acomodando las 7 cartas iniciales para ver qué juegos podés armar.", boardConfig: "chinchon_setup" },
+        { round: 2, description: "Cerrando la vuelta con un 2 de copas que te sobró.", boardConfig: "chinchon_meld" }
       ],
       scenarios: [
-        { title: "Cortar con menos de 5", description: "Tenés tus juegos armados y te queda un 2 de copas. Golpeás la mesa y se termina la vuelta.", boardConfig: "chinchon_meld" },
-        { title: "Esperando el Comodín", description: "Tener dos cartas para una escalera y esperar que el azar te dé el Joker.", boardConfig: "chinchon_setup" }
+        { title: "¡Chinchón!", description: "La escalera perfecta de 7 cartas. ¡Sos el rey de la mesa!", boardConfig: "chinchon_victory" },
+        { title: "El Comodín", description: "Usar el Joker para terminar tu juego. Muy útil pero un peligro si te cierran.", boardConfig: "chinchon_setup" }
       ],
-      faqs: [{ question: "¿A cuántos puntos se juega?", answer: "Generalmente a 100. El que se pasa, pierde." }]
+      faqs: [
+        { question: "¿A cuántos puntos se juega?", answer: "Generalmente a 100. El que se pasa, queda afuera." }
+      ]
     }
   }
 };
