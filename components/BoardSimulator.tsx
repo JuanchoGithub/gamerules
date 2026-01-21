@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { GameId } from '../types';
+import { GameId } from '../types.ts';
 
 interface BoardSimulatorProps {
   gameId: GameId;
@@ -256,7 +257,8 @@ const BoardSimulator: React.FC<BoardSimulatorProps> = ({ gameId, highlightSquare
       return setup[pt];
     };
 
-    const Point = ({ pt, isTop }: { pt: number; isTop: boolean; key?: React.Key }) => {
+    // Use React.FC to properly handle the 'key' prop when mapping over Points
+    const Point: React.FC<{ pt: number; isTop: boolean }> = ({ pt, isTop }) => {
       const checker = getCheckersAtPoint(pt);
       const isOdd = pt % 2 !== 0;
       const bgColor = isTop 

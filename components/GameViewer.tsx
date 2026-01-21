@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
-import { GameId, Language, RuleContent, FAQ, RuleDetail } from '../types';
-import { UI_TEXT, GAMES, PIECE_NAMES } from '../constants';
-import { GAME_CONTENT } from '../data/gameData';
-import BoardSimulator from './BoardSimulator';
+import { GameId, Language, RuleContent, FAQ } from '../types.ts';
+import { UI_TEXT, GAMES, PIECE_NAMES } from '../constants.ts';
+import { GAME_CONTENT } from '../data/gameData.ts';
+import BoardSimulator from './BoardSimulator.tsx';
 
 interface GameViewerProps {
   gameId: GameId;

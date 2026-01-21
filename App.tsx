@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { GameId, Language } from './types';
-import { GAMES, UI_TEXT } from './constants';
-import Layout from './components/Layout';
-import GameCard from './components/GameCard';
-import GameViewer from './components/GameViewer';
+import { GameId, Language } from './types.ts';
+import { GAMES, UI_TEXT } from './constants.ts';
+import Layout from './components/Layout.tsx';
+import GameCard from './components/GameCard.tsx';
+import GameViewer from './components/GameViewer.tsx';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
