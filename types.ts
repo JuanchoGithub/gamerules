@@ -1,7 +1,7 @@
 
 export type Language = 'en' | 'es-ar';
 
-export type GameId = 'chess' | 'checkers' | 'backgammon' | 'mancala';
+export type GameId = 'chess' | 'checkers' | 'backgammon' | 'mancala' | 'escoba' | 'chinchon';
 
 export interface GameInfo {
   id: GameId;

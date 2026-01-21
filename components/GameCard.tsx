@@ -13,7 +13,9 @@ const BoardHero: React.FC<{ gameId: GameId; color: string }> = ({ gameId, color 
     indigo: 'bg-indigo-600',
     rose: 'bg-rose-600',
     amber: 'bg-amber-600',
-    emerald: 'bg-emerald-600'
+    emerald: 'bg-emerald-600',
+    orange: 'bg-orange-600',
+    teal: 'bg-teal-600'
   };
 
   const renderVisual = () => {
@@ -85,6 +87,24 @@ const BoardHero: React.FC<{ gameId: GameId; color: string }> = ({ gameId, color 
               </div>
             </div>
             <div className="w-6 h-12 rounded-full border-2 border-white/10 bg-black/10"></div>
+          </div>
+        );
+      case 'escoba':
+      case 'chinchon':
+        return (
+          <div className="relative flex gap-2">
+            <div className="w-20 h-28 bg-white rounded-lg shadow-xl flex flex-col p-2 transform -rotate-12 border border-slate-200">
+               <span className="text-orange-600 font-bold text-lg">7</span>
+               <div className="flex-1 flex items-center justify-center">
+                 <i className="fas fa-coins text-3xl text-orange-400"></i>
+               </div>
+            </div>
+            <div className="w-20 h-28 bg-white rounded-lg shadow-xl flex flex-col p-2 absolute left-10 top-2 border border-slate-200">
+               <span className="text-slate-800 font-bold text-lg">1</span>
+               <div className="flex-1 flex items-center justify-center">
+                 <i className="fas fa-sword text-3xl text-slate-400"></i>
+               </div>
+            </div>
           </div>
         );
       default:

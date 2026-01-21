@@ -53,6 +53,32 @@ export const GAMES: GameInfo[] = [
     },
     icon: 'fa-gem',
     color: 'emerald'
+  },
+  {
+    id: 'escoba',
+    name: {
+      en: 'Escoba del 15',
+      'es-ar': 'Escoba del 15'
+    },
+    description: {
+      en: 'A classic Spanish card game. Sum to 15 to clear the table!',
+      'es-ar': 'Un clásico con cartas españolas. ¡Sumá 15 y barré la mesa!'
+    },
+    icon: 'fa-broom',
+    color: 'orange'
+  },
+  {
+    id: 'chinchon',
+    name: {
+      en: 'Chinchón',
+      'es-ar': 'Chinchón'
+    },
+    description: {
+      en: 'Form sequences or sets. The first to 0 points wins.',
+      'es-ar': 'Formá juegos de cartas iguales o escaleras. El que llega a 0 gana.'
+    },
+    icon: 'fa-layer-group',
+    color: 'teal'
   }
 ];
 

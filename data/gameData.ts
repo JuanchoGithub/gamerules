@@ -91,7 +91,7 @@ export const GAME_CONTENT: GameDataMap = {
       ],
       houseRules: [
         "The Huff (Soplada): If you forget to jump, the opponent can 'blow' your piece off the board.",
-        "Flying Kings: Kings move any distance along a diagonal (Argentine/Spanish style).",
+        "Flying Kings: Kings move any distance along a diagonal.",
         "Must capture maximum: If multiple jump paths exist, you must take the path with the most pieces."
       ],
       kidFriendly: "Allow backwards moves for everyone to make the game faster and more chaotic!",
@@ -312,6 +312,150 @@ export const GAME_CONTENT: GameDataMap = {
         { question: "¿Puedo pasar el turno?", answer: "No, si tenés semillas tenés que sembrar sí o sí." },
         { question: "¿El almacén del otro existe?", answer: "Está ahí, pero vos hacés de cuenta que no. Lo saltás como si fuera lava." }
       ]
+    }
+  },
+  escoba: {
+    en: {
+      overview: "Escoba del 15 (Broom of 15) is a trick-taking card game played with a Spanish deck. Players try to capture cards from the table that, combined with one card from their hand, sum exactly to 15.",
+      setup: "Deal 3 cards to each player and place 4 face-up on the table. Use a 40-card Spanish deck (no 8s, 9s, or Jokers). Values: Ace=1, Jack=8, Knight=9, King=10.",
+      rules: [
+        { text: "Sum to 15: Play one card from your hand. If it sums to 15 with one or more cards on the table, you capture them all.", boardConfig: "escoba_sum15" },
+        { text: "Escoba: If you clear all cards from the table in one move, you score an 'Escoba' (1 point). Mark it by placing a card face-up in your pile.", boardConfig: "escoba_clear" },
+        { text: "The Last Cards: The player who made the last capture of the game takes all remaining cards on the table.", boardConfig: "escoba_setup" },
+        { text: "Scoring: After the deck is empty, count points for: Most cards, Most Golds, Siete de Velas (7 of Golds), Most 7s, and each Escoba." }
+      ],
+      houseRules: [
+        "Escoba de Mano: If the 4 initial cards on the table sum to 15 or 30, the dealer scores 1 or 2 Escobas immediately.",
+        "Blind Play: In some variants, you can't see the opponent's captured cards.",
+        "Penalty: If a player fails to capture when they could have made 15, they lose points."
+      ],
+      kidFriendly: "Math Magic: Think of it as a speed-math game! Great for practicing addition while playing with cool-looking cards.",
+      strategies: [
+        "Control the 5s and 7s: These are the most versatile cards for reaching 15.",
+        "Avoid leaving a table sum under 10: This makes it easy for the next player to clear the table.",
+        "Prioritize Golds: The '7 of Golds' is the most valuable single card in the game."
+      ],
+      pitfalls: [
+        "Forgetting to check for multiple card combinations on the table.",
+        "Leading with a high card when the table is empty.",
+        "Letting the opponent take all the 7s."
+      ],
+      stepByStep: [
+        { round: 1, description: "Opening: Table has 1, 2, 7, 4. Hand has 7. 7 (hand) + 1 + 7 (table) = 15! Capture!", boardConfig: "escoba_sum15" },
+        { round: 2, description: "The Sweep: Only 8 and 7 on the table. You play an Ace (1). 8+7=15. Table cleared. ESCOBA!", boardConfig: "escoba_clear" }
+      ],
+      scenarios: [
+        { title: "The 7 of Golds", description: "Always try to capture this specific card. It counts for 3 different scoring categories!", boardConfig: "escoba_setup" },
+        { title: "Calculating the Broom", description: "Leaving a 10 on the table when you have a 5 is a classic trap.", boardConfig: "escoba_sum15" }
+      ],
+      faqs: [{ question: "What happens if I can't make 15?", answer: "You must discard one card from your hand and place it face-up on the table." }]
+    },
+    'es-ar': {
+      overview: "La Escoba del 15 es el juego de cartas más popular para jugar en familia en Argentina. Se trata de sumar 15 combinando una carta de tu mano con las de la mesa.",
+      setup: "Se reparten 3 cartas a cada uno y se ponen 4 boca arriba en la mesa. Se juega con mazo español de 40. Valores: As=1, Sota=8, Caballo=9, Rey=10.",
+      rules: [
+        { text: "Sumar 15: Tirás una carta de tu mano. Si sumás 15 con cartas de la mesa, te las llevás todas.", boardConfig: "escoba_sum15" },
+        { text: "La Escoba: Si lográs dejar la mesa vacía de un solo tiro, ¡hacés Escoba! Vale 1 punto.", boardConfig: "escoba_clear" },
+        { text: "Última mano: El último que levantó algo en la partida se lleva lo que haya quedado sobrando en la mesa.", boardConfig: "escoba_setup" },
+        { text: "Puntaje: Se cuentan: Cantidad de cartas, cantidad de Oros, el 7 de Oros (Siete de Velas), cantidad de sietes y las Escobas." }
+      ],
+      houseRules: [
+        "Escoba de mano: Si las 4 cartas iniciales suman 15 o 30, el que reparte ya suma 1 o 2 escobas de una.",
+        "Partido a 15 o 21: Se suele jugar hasta que alguien llegue a esos puntos totales.",
+        "Mala jugada: Si tenés para sumar 15 y no lo hacés, te pueden penalizar si se dan cuenta."
+      ],
+      kidFriendly: "¡Cuentas Locas!: Es ideal para que los chicos practiquen sumas mientras se divierten. '¿Cuánto le falta al 7 para llegar a 15?'",
+      strategies: [
+        "No dejes la mesa servida: Si dejás cartas que sumen poco, el que sigue te va a meter una escoba en la frente.",
+        "Cuidá los 7: Son las cartas más importantes para ganar puntos al final.",
+        "El Siete de Velas: El 7 de oros es la carta sagrada. Si la tenés, no la sueltes fácil."
+      ],
+      pitfalls: [
+        "Tirar un 5 cuando en la mesa hay un 10 (¡Escoba servida!).",
+        "Olvidarse de contar bien y dejar pasar una jugada ganadora.",
+        "Desarmar tu juego de oros por intentar hacer una escoba chica."
+      ],
+      stepByStep: [
+        { round: 1, description: "Arranque: En la mesa hay un 1, un 2 y un 7. Vos tenés un 5. 5+7+2+1 = 15. ¡A la bolsa!", boardConfig: "escoba_sum15" },
+        { round: 2, description: "Limpieza: Queda un 8 y un 7. Tirás un As (1). 8+7+1 = 16? No! 8+7=15. ¡ESCOBA!", boardConfig: "escoba_clear" }
+      ],
+      scenarios: [
+        { title: "El Siete de Velas", description: "Es el 7 de oros. Vale por punto de oros, punto de 7s y punto de cartas si ayuda.", boardConfig: "escoba_setup" },
+        { title: "La Trampa del 5", description: "Si tirás un 5 y en la mesa hay un Rey (10), le regalás la escoba al otro.", boardConfig: "escoba_sum15" }
+      ],
+      faqs: [{ question: "¿Qué pasa si no sumo 15?", answer: "Tenés que tirar una carta a la mesa y dejarla ahí para que otro la use." }]
+    }
+  },
+  chinchon: {
+    en: {
+      overview: "Chinchón is a matching game similar to Rummy. The goal is to form sets of identical cards or runs of cards in the same suit to reduce your points to zero.",
+      setup: "Each player gets 7 cards. One card is placed face-up to start the discard pile. Use a 40-card Spanish deck + 2 Jokers.",
+      rules: [
+        { text: "The Turn: Draw a card from the deck or the discard pile, then discard one card.", boardConfig: "chinchon_meld" },
+        { text: "Meld: A set is 3+ cards of same value. A run is 3+ consecutive cards of the same suit.", boardConfig: "chinchon_meld" },
+        { text: "Closing (Cortar): You can end the round if you have only 5 points or less left in your hand after melds.", boardConfig: "chinchon_victory" },
+        { text: "Chinchón: Form a single run of 7 cards to win instantly with -10 points!", boardConfig: "chinchon_victory" }
+      ],
+      houseRules: [
+        "Wildcard Joker: The Joker can replace any card in a meld, but adds 25 points if left in hand.",
+        "No-Discard Closing: You must close the game without a discard for -10 points.",
+        "Re-entry: If you reach 100 points, you can 'buy back' into the game with the same points as the highest active player."
+      ],
+      kidFriendly: "Color Matching: For younger kids, just focus on getting 3 cards of the same suit or 3 of the same number. Don't worry about the scoring until the end!",
+      strategies: [
+        "Keep low cards: If you can't meld everything, try to have Aces or 2s so your score doesn't skyrocket.",
+        "Watch the discards: See what your opponent is taking to avoid giving them the card they need.",
+        "Wait for the Chinchón: If you have a long run, it's worth the risk of not closing early."
+      ],
+      pitfalls: [
+        "Holding high cards (Kings, Knights) for too long.",
+        "Discarding a card that completes an opponent's run.",
+        "Forgetting to check if you can already close the game."
+      ],
+      stepByStep: [
+        { round: 1, description: "The Meld: You have three 4s and a run of 1, 2, 3 of clubs. Only one card left!", boardConfig: "chinchon_meld" },
+        { round: 2, description: "The Chinchón: You get the 4, 5, 6, 7 of clubs to join your 1, 2, 3. Incredible! You win!", boardConfig: "chinchon_victory" }
+      ],
+      scenarios: [
+        { title: "Closing the Game", description: "When you have a set and a run, and your remaining card is a 1. Knock on the table!", boardConfig: "chinchon_meld" },
+        { title: "The Joker Trap", description: "Having a Joker is great for melds, but it's a huge risk if someone else closes first.", boardConfig: "chinchon_setup" }
+      ],
+      faqs: [{ question: "What is the score limit?", answer: "Usually 100 points. If you pass it, you are out!" }]
+    },
+    'es-ar': {
+      overview: "El Chinchón es el juego de cartas por excelencia para las sobremesas. El objetivo es agrupar tus 7 cartas en juegos (mismos números o escaleras) para sumar la menor cantidad de puntos.",
+      setup: "Se reparten 7 cartas a cada uno. Se juega con mazo de 40 o 48 más 2 comodines. Una carta queda en el pozo.",
+      rules: [
+        { text: "El Turno: Robás una carta del mazo o del pozo, y después tirás una al pozo.", boardConfig: "chinchon_meld" },
+        { text: "Armar Juegos: Un juego son 3 o más cartas del mismo número, o una escalera del mismo palo.", boardConfig: "chinchon_meld" },
+        { text: "Cortar: Podés terminar la ronda si te quedan 5 puntos o menos en la mano (sin contar tus juegos).", boardConfig: "chinchon_victory" },
+        { text: "Hacer Chinchón: Si armás una escalera de 7 cartas de un saque, ¡ganás el juego y restás 10 puntos!", boardConfig: "chinchon_victory" }
+      ],
+      houseRules: [
+        "Comodín castigado: Si te cierran y tenés el comodín en la mano sin usar, sumás 25 o 50 puntos de castigo.",
+        "Corte en 0: Muchos juegan a que solo se puede cortar si tenés 0 puntos en la mano.",
+        "Enganche: Cuando alguien pierde, puede volver a entrar al juego pagando ('engancharse') con los puntos del que va peor."
+      ],
+      kidFriendly: "Juntá Colores: Para los más chiquitos, la consigna es simplemente juntar 3 cartas del mismo dibujo o el mismo número. ¡Sin puntos complicados!",
+      strategies: [
+        "Descartate lo alto: Si tenés un Rey (10) o un Caballo (9) que no te sirve, tiralo rápido antes de que alguien corte.",
+        "No regales cartas: Si ves que el otro está juntando Espadas, no le tires la que le falta.",
+        "El As de Oros: A veces se juega que el As de Oros funciona como un comodín extra."
+      ],
+      pitfalls: [
+        "Quedarse esperando una carta que nunca sale.",
+        "Cortar con 5 puntos cuando el otro tiene 0 y te termina ganando la ronda.",
+        "Olvidarse de acomodar las cartas para ver qué te falta."
+      ],
+      stepByStep: [
+        { round: 1, description: "El Juego: Tenés tres 4 y el 1, 2, 3 de Bastos. Solo te queda una Sota de Oros suelta. ¡Podés cortar!", boardConfig: "chinchon_meld" },
+        { round: 2, description: "El Gran Final: Robás el 4 de Bastos. Tenés la escalera completa del 1 al 7. ¡CHINCHÓN!", boardConfig: "chinchon_victory" }
+      ],
+      scenarios: [
+        { title: "Cortar con menos de 5", description: "Tenés tus juegos armados y te queda un 2 de copas. Golpeás la mesa y se termina la vuelta.", boardConfig: "chinchon_meld" },
+        { title: "Esperando el Comodín", description: "Tener dos cartas para una escalera y esperar que el azar te dé el Joker.", boardConfig: "chinchon_setup" }
+      ],
+      faqs: [{ question: "¿A cuántos puntos se juega?", answer: "Generalmente a 100. El que se pasa, pierde." }]
     }
   }
 };
